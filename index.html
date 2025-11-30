@@ -94,8 +94,8 @@
       <div class="logo-icon">D</div> DecoSillas
     </div>
 
-    <!-- WhatsApp actualizado -->
-    <a class="wa-small" href="https://wa.me/5491160457748">WhatsApp</a>
+    <!-- WhatsApp dinámico -->
+    <a class="wa-small wa-link" data-text="">WhatsApp</a>
   </div>
 </header>
 
@@ -113,7 +113,9 @@
         <li>✔ Pagás cuando recibís</li>
       </ul>
 
-      <a class="wa-main" href="https://wa.me/5491160457748">Consultar por WhatsApp</a>
+      <a class="wa-main wa-link" data-text="Hola%2C%20quiero%20ver%20las%20sillas%20disponibles">
+        Consultar por WhatsApp
+      </a>
     </div>
 
     <div class="hero-img">
@@ -121,7 +123,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN ÚNICA: TODAS LAS SILLAS -->
+  <!-- SECCIÓN ÚNICA DE SILLAS -->
   <section>
     <h2>Sillas disponibles</h2>
 
@@ -135,7 +137,7 @@
         <div class="card-body">
           <div class="card-title">Silla Tulum entrelazada</div>
           <div class="card-price">$44.999</div>
-          <a class="wa-card" href="https://wa.me/5491160457748?text=Quiero%20info%20de%20la%20Silla%20Tulum">Consultar</a>
+          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20la%20Silla%20Tulum">Consultar</a>
         </div>
       </div>
 
@@ -147,7 +149,7 @@
         <div class="card-body">
           <div class="card-title">Silla Rio reforzada</div>
           <div class="card-price">$19.999</div>
-          <a class="wa-card" href="https://wa.me/5491160457748?text=Quiero%20info%20de%20la%20Silla%20Rio">Consultar</a>
+          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20la%20Silla%20Rio">Consultar</a>
         </div>
       </div>
 
@@ -159,7 +161,7 @@
         <div class="card-body">
           <div class="card-title">Silla Allegra</div>
           <div class="card-price">$19.999</div>
-          <a class="wa-card" href="https://wa.me/5491160457748?text=Quiero%20info%20de%20la%20Silla%20Allegra">Consultar</a>
+          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20la%20Silla%20Allegra">Consultar</a>
         </div>
       </div>
 
@@ -171,7 +173,7 @@
         <div class="card-body">
           <div class="card-title">Banquetas de barra</div>
           <div class="card-price">Consultar precio</div>
-          <a class="wa-card" href="https://wa.me/5491160457748?text=Quiero%20info%20de%20banquetas">Consultar</a>
+          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20banquetas">Consultar</a>
         </div>
       </div>
 
@@ -181,12 +183,38 @@
 </main>
 
 <footer>
-  DecoSillas · Olivos · Envíos en 24/48 hs —
-  <a href="https://wa.me/5491160457748">Contacto</a>
+  DecoSillas · Olivos · Envíos en 24/48 hs
 </footer>
+
+<!-- SCRIPT WHATSAPP DINÁMICO -->
+<script>
+  // Lista de vendedores y sus teléfonos
+  const VENDEDORES = {
+    general:  "5491122535108",
+    marcela:  "5491156405357",
+    leonardo: "5491160457748",
+    magali:   "5491162472194",
+    estefano: "5491157828201",
+    damian:   "5491122535108"
+  };
+
+  // Detectar ?v=nombre
+  const params = new URLSearchParams(window.location.search);
+  const key = params.get("v")?.toLowerCase() || "general";
+  const telefono = VENDEDORES[key] || VENDEDORES.general;
+
+  // Cambiar todos los enlaces class="wa-link"
+  document.querySelectorAll(".wa-link").forEach(a => {
+    const textEncoded = a.getAttribute("data-text") || "";
+    const base = "https://wa.me/" + telefono;
+    a.href = textEncoded ? base + "?text=" + textEncoded : base;
+  });
+</script>
 
 </body>
 </html>
+
+
 
 
 
