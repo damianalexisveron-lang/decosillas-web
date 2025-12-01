@@ -3,214 +3,707 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DecoSillas - Sillas listas para entregar</title>
-
+  <title>DecoSillas - Sillas y muebles con envíos a todo Buenos Aires</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:system-ui,sans-serif; }
-    body { background:#f5f1ea; color:#222; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f5f1ea;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     header {
-      position:sticky; top:0; background:rgba(245,241,234,0.95);
-      border-bottom:1px solid #e0d6c7; backdrop-filter:blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245, 241, 234, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e0d6c7;
     }
+
     .nav-container {
-      max-width:1100px; margin:auto; padding:0.7rem 1rem;
-      display:flex; justify-content:space-between; align-items:center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .logo { display:flex; align-items:center; gap:0.5rem; font-weight:700; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
     .logo-icon {
-      width:32px; height:32px; background:#b08968;
-      display:flex; align-items:center; justify-content:center;
-      color:#fff; border-radius:8px;
-    }
-    .wa-small {
-      padding:0.4rem 0.9rem; background:#25d366; color:#fff;
-      font-size:0.85rem; border-radius:999px; font-weight:600;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #d4a373, #b08968);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
     }
 
-    main { max-width:1100px; margin:auto; padding:1.5rem 1rem 3rem; }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
 
-    /* HERO */
+    .nav-links a {
+      opacity: 0.7;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .btn-whatsapp-small {
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      background: #25d366;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-whatsapp-small span {
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    /* Hero */
     .hero {
-      background:linear-gradient(135deg,#f5f1ea,#e7dbce);
-      padding:1.6rem; border-radius:1.5rem;
-      display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;
-      border:1px solid #e0d6c7; margin-bottom:2rem;
-    }
-    .hero h1 { font-size:2rem; margin-bottom:0.5rem; }
-    .hero p { margin-bottom:1rem; opacity:0.85; }
-    .hero ul { list-style:none; margin-bottom:1.2rem; }
-    .hero li { margin-bottom:0.35rem; }
-    .wa-main {
-      padding:0.75rem 1.5rem; background:#25d366;
-      color:#fff; border-radius:999px; font-size:1rem; font-weight:600;
-      display:inline-block;
-    }
-    .hero-img img {
-      width:100%; height:100%; border-radius:1.2rem; object-fit:cover;
-    }
-    @media(max-width:770px){
-      .hero { grid-template-columns:1fr; }
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 1.5rem 1.5rem 2rem;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, #f5f1ea, #e8ded0);
+      border: 1px solid #e0d6c7;
+      margin-bottom: 2rem;
     }
 
-    /* GRID SILLAS */
-    h2 { margin-bottom:1rem; font-size:1.5rem; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e0d6c7;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      font-size: 0.98rem;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-list li {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-list li::before {
+      content: "•";
+      color: #b08968;
+      font-size: 1.1rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-whatsapp {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: #25d366;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-outline {
+      padding: 0.65rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid #b08968;
+      background: transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #7b5e43;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.4rem;
+    }
+
+    .hero-image {
+      border-radius: 1.3rem;
+      overflow: hidden;
+      background: #d8c4a7;
+      position: relative;
+      min-height: 220px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-image img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .hero-tag {
+      position: absolute;
+      bottom: 0.9rem;
+      left: 0.9rem;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.9rem;
+      font-size: 0.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Secciones */
+    section {
+      margin-bottom: 2.2rem;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    section p.section-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Grid de productos */
     .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-      gap:1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
     }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding: 1rem 0.75rem 2.5rem;
+      }
+
+      .hero {
+        padding: 1.2rem 1rem 1.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .card {
-      background:#fff; border-radius:1rem;
-      border:1px solid #e0d6c7; overflow:hidden;
-      transition:0.2s;
+      background: #fff;
+      border-radius: 1rem;
+      border: 1px solid #e0d6c7;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
-    .card:hover { transform:translateY(-3px); }
-    .card-img { position:relative; padding-top:70%; background:#ddd; }
+
+    .card:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-img {
+      position: relative;
+      padding-top: 70%;
+      background: #ddd;
+      overflow: hidden;
+    }
+
     .card-img img {
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .card-body { padding:0.8rem; }
-    .card-title { font-weight:600; margin-bottom:0.3rem; }
-    .card-price { color:#b08968; font-weight:700; margin-bottom:0.5rem; }
-    .wa-card {
-      display:inline-block; margin-top:0.4rem;
-      background:#25d366; color:#fff;
-      padding:0.5rem 1rem; border-radius:999px; font-size:0.85rem;
+
+    .card-badge {
+      position: absolute;
+      top: 0.6rem;
+      left: 0.6rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .card-body {
+      padding: 0.8rem 0.9rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-price {
+      font-size: 0.95rem;
+      color: #b08968;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .card-meta {
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+
+    .card-footer {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-card {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .btn-card-whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .btn-card-outline {
+      background: transparent;
+      border: 1px solid #e0d6c7;
+      color: #7b5e43;
+    }
+
+    /* Info */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 780px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-item {
+      background: #fff;
+      border-radius: 1rem;
+      border: 1px solid #e0d6c7;
+      padding: 0.9rem;
+    }
+
+    .info-item h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
     }
 
     footer {
-      text-align:center; padding:1rem; font-size:0.85rem; color:#7b5e43;
-      border-top:1px solid #e0d6c7;
+      border-top: 1px solid #e0d6c7;
+      padding: 1rem 1rem 1.5rem;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #7b5e43;
+      background: #f5f1ea;
     }
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="nav-container">
-    <div class="logo">
-      <div class="logo-icon">D</div> DecoSillas
-    </div>
-
-    <!-- WhatsApp dinámico -->
-    <a class="wa-small wa-link" data-text="">WhatsApp</a>
-  </div>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>Sillas listas para entrega</h1>
-      <p>Envíos en 24/48 hs o retirás en Olivos. Pagás al recibir.</p>
-
-      <ul>
-        <li>✔ Sillas Tulum · Rio · Allegra · Banquetas</li>
-        <li>✔ Envíos a todo Buenos Aires</li>
-        <li>✔ Pagás cuando recibís</li>
-      </ul>
-
-      <a class="wa-main wa-link" data-text="Hola%2C%20quiero%20ver%20las%20sillas%20disponibles">
-        Consultar por WhatsApp
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">D</div>
+        <div>
+          <div>DecoSillas</div>
+          <div style="font-size: 0.7rem; opacity: 0.7;">Sillas y muebles · Olivos, Vicente López</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#destacados">Destacados</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#envios">Envíos</a>
+      </div>
+      <a href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20vengo%20desde%20la%20web%20DecoSillas%20y%20quiero%20hacer%20una%20consulta"
+         class="btn-whatsapp-small">
+        <span>🟢</span> WhatsApp
       </a>
     </div>
+  </header>
 
-    <div class="hero-img">
-      <img src="imagenes/hero1.jpg" alt="Sillas DecoSillas">
-    </div>
-  </section>
-
-  <!-- SECCIÓN ÚNICA DE SILLAS -->
-  <section>
-    <h2>Sillas disponibles</h2>
-
-    <div class="grid">
-
-      <!-- TULUM -->
-      <div class="card">
-        <div class="card-img">
-          <img src="imagenes/silla-tulum.jpg" alt="Silla Tulum">
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-badge">✔ Pagás al recibir · Envíos a todo Buenos Aires</div>
+        <h1>Sillas y muebles listos para tu hogar o negocio</h1>
+        <p>
+          Vendemos sillas Tulum, Rio, Allegra, Tulip, banquetas y más.  
+          Retiros en Olivos (Vicente López) o envíos en 24/48 hs según zona.
+        </p>
+        <ul class="hero-list">
+          <li>Pagás al recibir en efectivo o transferencia</li>
+          <li>Atención directa por WhatsApp, nada de bots</li>
+          <li>Ventas por menor y por mayor para bares, restaurantes y deco hogar</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn-whatsapp"
+             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20ver%20las%20sillas%20disponibles">
+            💬 Consultar ahora por WhatsApp
+          </a>
+          <button class="btn-outline" onclick="document.getElementById('destacados').scrollIntoView({behavior:'smooth'})">
+            Ver catálogo rápido
+          </button>
         </div>
-        <div class="card-body">
-          <div class="card-title">Silla Tulum entrelazada</div>
-          <div class="card-price">$44.999</div>
-          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20la%20Silla%20Tulum">Consultar</a>
-        </div>
-      </div>
-
-      <!-- RIO -->
-      <div class="card">
-        <div class="card-img">
-          <img src="imagenes/silla-rio.jpg" alt="Silla Rio">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Rio reforzada</div>
-          <div class="card-price">$19.999</div>
-          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20la%20Silla%20Rio">Consultar</a>
+        <div class="hero-note">
+          Horario de atención: Lunes a sábado de 9 a 19 hs.
         </div>
       </div>
 
-      <!-- ALLEGRA -->
-      <div class="card">
-        <div class="card-img">
-          <img src="imagenes/silla-allegra.jpg" alt="Silla Allegra">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Allegra</div>
-          <div class="card-price">$19.999</div>
-          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20la%20Silla%20Allegra">Consultar</a>
+      <div class="hero-image">
+        <!-- Cambiá esta imagen por una foto real tuya de varias sillas -->
+        <img src="imagenes/decosillas-hero.jpg" alt="Sillas DecoSillas en comedor moderno" />
+        <div class="hero-tag">
+          ⭐ Más de 500 clientes en Buenos Aires <br />
+          Envíos rápidos desde Olivos
         </div>
       </div>
+    </section>
 
-      <!-- BANQUETAS -->
-      <div class="card">
-        <div class="card-img">
-          <img src="imagenes/banquetas-bar.jpg" alt="Banquetas">
+    <!-- DESTACADOS -->
+    <section id="destacados">
+      <h2>Productos destacados</h2>
+      <p class="section-subtitle">
+        Elegí el modelo que te gusta y hacé clic en WhatsApp para coordinar envío o retiro.
+      </p>
+
+      <div class="grid">
+        <!-- TULUM -->
+        <article class="card">
+          <div class="card-img">
+            <span class="card-badge">Top ventas</span>
+            <!-- Foto de sillas Tulum -->
+            <img src="imagenes/silla-tulum.jpg" alt="Silla Tulum entrelazada" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">Silla Tulum entrelazada</div>
+            <div class="card-price">$44.999 c/u</div>
+            <div class="card-desc">
+              Hierro pintado y asiento entrelazado. Ideal para comedor, galería o bares.
+            </div>
+            <div class="card-meta">
+              ✔ Respaldo alto · ✔ Soporta uso diario · ✔ Colores varios
+            </div>
+            <div class="card-footer">
+              <a class="btn-card btn-card-whatsapp"
+                 href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20info%20de%20la%20Silla%20Tulum%20entrelazada">
+                💬 Consultar por WhatsApp
+              </a>
+              <button class="btn-card btn-card-outline">
+                + info medidas
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- RIO -->
+        <article class="card">
+          <div class="card-img">
+            <span class="card-badge">Precio especial</span>
+            <img src="imagenes/silla-rio.jpg" alt="Silla Rio" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">Silla Rio</div>
+            <div class="card-price">$19.999 c/u</div>
+            <div class="card-desc">
+              Silla plástica reforzada, apilable, perfecta para interior y exterior.
+            </div>
+            <div class="card-meta">
+              ✔ Fácil de limpiar · ✔ Súper liviana · ✔ Ideal comercios
+            </div>
+            <div class="card-footer">
+              <a class="btn-card btn-card-whatsapp"
+                 href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20vengo%20desde%20la%20web%20y%20quiero%20la%20Silla%20Rio">
+                💬 Consultar por WhatsApp
+              </a>
+              <button class="btn-card btn-card-outline">
+                Ver combos x4/x6
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ALLEGRA -->
+        <article class="card">
+          <div class="card-img">
+            <span class="card-badge">Home decor</span>
+            <img src="imagenes/silla-allegra.jpg" alt="Silla Allegra" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">Silla Allegra</div>
+            <div class="card-price">$24.999 c/u</div>
+            <div class="card-desc">
+              Diseño moderno, ideal para livings, comedores y locales de deco.
+            </div>
+            <div class="card-meta">
+              ✔ Plástico inyectado · ✔ Varios colores · ✔ Súper combinable
+            </div>
+            <div class="card-footer">
+              <a class="btn-card btn-card-whatsapp"
+                 href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20la%20Silla%20Allegra">
+                💬 Consultar por WhatsApp
+              </a>
+              <button class="btn-card btn-card-outline">
+                Ver colores
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS / COMBOS -->
+    <section id="categorias">
+      <h2>Combos y categorías</h2>
+      <p class="section-subtitle">
+        También armamos combos con mesas, packs para bares y restaurantes,
+        y ventas por mayor.
+      </p>
+
+      <div class="grid">
+        <!-- COMBO TULIP + MESA -->
+        <article class="card">
+          <div class="card-img">
+            <img src="imagenes/combo-tulip-mesa.jpg" alt="Combo mesa y sillas Tulip" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">Combo Mesa + 4 Sillas Tulip</div>
+            <div class="card-price">$249.999</div>
+            <div class="card-desc">
+              Mesa estilo Eames/Tulip + 4 sillas Tulip blancas. Ideal comedor moderno.
+            </div>
+            <div class="card-meta">
+              ✔ Retiro en Olivos o envío · ✔ Pagás al recibir
+            </div>
+            <div class="card-footer">
+              <a class="btn-card btn-card-whatsapp"
+                 href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20info%20del%20combo%20Mesa%20%2B%204%20Sillas%20Tulip">
+                💬 Reservar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- BANQUETAS -->
+        <article class="card">
+          <div class="card-img">
+            <img src="imagenes/banquetas-bar.jpg" alt="Banquetas altas para barra" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">Banquetas para barra</div>
+            <div class="card-price">Consultá precio mayorista</div>
+            <div class="card-desc">
+              Banquetas Tulum, Tolix y otros modelos para barras de cocina o locales.
+            </div>
+            <div class="card-meta">
+              ✔ Packs para bares · ✔ Varios modelos y alturas
+            </div>
+            <div class="card-footer">
+              <a class="btn-card btn-card-whatsapp"
+                 href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20precios%20mayoristas%20de%20banquetas">
+                💬 Pedir lista mayorista
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- SILLAS POR MAYOR -->
+        <article class="card">
+          <div class="card-img">
+            <img src="imagenes/sillas-mayorista.jpg" alt="Sillas para bares y restaurantes" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">Ventas por mayor</div>
+            <div class="card-price">Listas especiales por cantidad</div>
+            <div class="card-desc">
+              Equipamos bares, restaurantes, salones y patios cerveceros en todo Buenos Aires.
+            </div>
+            <div class="card-meta">
+              ✔ Factura · ✔ Asesoría según tu espacio
+            </div>
+            <div class="card-footer">
+              <a class="btn-card btn-card-whatsapp"
+                 href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20cotizar%20sillas%20por%20mayor">
+                💬 Cotizar por mayor
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- INFO ENVÍOS -->
+    <section id="envios">
+      <h2>Envíos y retiros</h2>
+      <p class="section-subtitle">
+        Hacemos envíos a todo Buenos Aires. También podés retirar sin costo en nuestro depósito de Olivos.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <h3>Retiros en Olivos</h3>
+          <p>
+            Zona Olivos, Vicente López.  
+            Coordinamos día y horario por WhatsApp una vez confirmada la reserva.
+          </p>
         </div>
-        <div class="card-body">
-          <div class="card-title">Banquetas de barra</div>
-          <div class="card-price">Consultar precio</div>
-          <a class="wa-card wa-link" data-text="Quiero%20info%20de%20banquetas">Consultar</a>
+        <div class="info-item">
+          <h3>Envíos a todo Buenos Aires</h3>
+          <p>
+            Envíos en 24/48 hs según zona.  
+            Trabajamos con transporte propio y expreso para el interior de la provincia.
+          </p>
+        </div>
+        <div class="info-item">
+          <h3>Formas de pago</h3>
+          <p>
+            Pagás al recibir en efectivo o transferencia.  
+            Consultanos por opciones de seña para reservar stock.
+          </p>
         </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
+  <footer>
+    DecoSillas · Sillas y muebles · Olivos, Vicente López · Envíos a todo Buenos Aires ·
+    <a href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20necesito%20informaci%C3%B3n%20de%20sillas">Escribinos por WhatsApp</a>
+  </footer>
 
-</main>
+  <!-- SCRIPT PARA QUE CADA VENDEDOR TENGA SU PROPIO WHATSAPP SEGÚN LA URL -->
+  <script>
+    // Mapeo de asesores a números de WhatsApp
+    const asesores = {
+      damian:   '5491122535108',
+      leonardo: '5491160457748',
+      marcela:  '5491156405357',
+      estefano: '5491157828201',
+      magali:   '5491162472194'
+    };
 
-<footer>
-  DecoSillas · Olivos · Envíos en 24/48 hs
-</footer>
+    // Leer el parámetro "asesor" de la URL (ej: ?asesor=damian)
+    const params = new URLSearchParams(window.location.search);
+    const asesorParam = (params.get('asesor') || 'damian').toLowerCase();
 
-<!-- SCRIPT WHATSAPP DINÁMICO -->
-<script>
-  // Lista de vendedores y sus teléfonos
-  const VENDEDORES = {
-    general:  "5491122535108",
-    marcela:  "5491156405357",
-    leonardo: "5491160457748",
-    magali:   "5491162472194",
-    estefano: "5491157828201",
-    damian:   "5491122535108"
-  };
+    // Si no existe el asesor en el mapa, usamos damian por defecto
+    const numeroWhatsApp = asesores[asesorParam] || asesores['damian'];
 
-  // Detectar ?v=nombre
-  const params = new URLSearchParams(window.location.search);
-  const key = params.get("v")?.toLowerCase() || "general";
-  const telefono = VENDEDORES[key] || VENDEDORES.general;
-
-  // Cambiar todos los enlaces class="wa-link"
-  document.querySelectorAll(".wa-link").forEach(a => {
-    const textEncoded = a.getAttribute("data-text") || "";
-    const base = "https://wa.me/" + telefono;
-    a.href = textEncoded ? base + "?text=" + textEncoded : base;
-  });
-</script>
-
+    // Reemplazar NUMERO_PLACEHOLDER en todos los enlaces
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('a[href*="NUMERO_PLACEHOLDER"]');
+      links.forEach(link => {
+        link.href = link.href.replace('NUMERO_PLACEHOLDER', numeroWhatsApp);
+      });
+    });
+  </script>
 </body>
 </html>
 
