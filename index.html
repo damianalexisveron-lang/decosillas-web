@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DecoSillas Catálogo Premium - Sillas y Banquetas</title>
+  <title>DecoSillas - Catálogo de Sillas y Sillones</title>
 
   <style>
     * {
@@ -60,10 +60,25 @@
       font-size: 1rem;
     }
 
+    .btn-whatsapp-small {
+      padding: .45rem .9rem;
+      background: #25d366;
+      border-radius: 999px;
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 700;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(37, 211, 102, .4);
+    }
+
     /* === FILTROS === */
     .filterbar {
       max-width: 1200px;
-      margin: 1rem auto;
+      margin: 1rem auto 0.5rem;
       padding: 0 1rem;
       display: flex;
       gap: .5rem;
@@ -231,7 +246,7 @@
         <div class="logo-icon">D</div>
         <div>
           DecoSillas
-          <div style="font-size: .74rem; opacity:.7;">Catálogo Premium</div>
+          <div style="font-size: .74rem; opacity:.7;">Catálogo de Sillas y Sillones</div>
         </div>
       </div>
 
@@ -245,18 +260,36 @@
   <!-- FILTROS -->
   <div class="filterbar">
     <button class="filter-btn active" data-filter="all">Todas</button>
-    <button class="filter-btn" data-filter="entrelazada">Entrelazadas</button>
-    <button class="filter-btn" data-filter="plastico">Plásticas</button>
+    <button class="filter-btn" data-filter="yute">Yute / Entrelazadas</button>
+    <button class="filter-btn" data-filter="madera">Madera</button>
+    <button class="filter-btn" data-filter="plastico">Plástico</button>
     <button class="filter-btn" data-filter="metal">Metal</button>
-    <button class="filter-btn" data-filter="pack">Packs</button>
+    <button class="filter-btn" data-filter="gamer">Gamer</button>
   </div>
 
   <!-- GRID -->
   <main>
     <div class="grid">
 
-      <!-- TULUM -->
-      <article class="card" data-categoria="entrelazada">
+      <!-- SILLÓN CAPRI -->
+      <article class="card" data-categoria="yute">
+        <div class="card-img">
+          <img src="imagenes/sillon-capri.jpg" alt="Sillón Capri">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sillón Capri</div>
+          <div class="card-price">$59.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Sillon%20Capri%20-%20$59.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/sillon-capri.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SILLA TULUM ENTRELAZADA -->
+      <article class="card" data-categoria="yute">
         <div class="card-img">
           <img src="imagenes/silla-tulum.jpg" alt="Silla Tulum entrelazada">
         </div>
@@ -272,10 +305,44 @@
         </div>
       </article>
 
-      <!-- RIO -->
+      <!-- BANQUETA TULUM ENTRELAZADA -->
+      <article class="card" data-categoria="yute">
+        <div class="card-img">
+          <img src="imagenes/banqueta-tulum.jpg" alt="Banqueta Tulum entrelazada">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Banqueta Tulum entrelazada</div>
+          <div class="card-price">$44.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Banqueta%20Tulum%20entrelazada%20-%20$44.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/banqueta-tulum.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SILLA BALI -->
+      <article class="card" data-categoria="madera">
+        <div class="card-img">
+          <img src="imagenes/silla-bali.jpg" alt="Silla Bali madera">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Silla Bali</div>
+          <div class="card-price">$99.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Bali%20-%20$99.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-bali.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SILLA RÍO -->
       <article class="card" data-categoria="plastico">
         <div class="card-img">
-          <img src="imagenes/silla-rio.jpg" alt="Silla Río">
+          <img src="imagenes/silla-rio.jpg" alt="Silla Río plástica">
         </div>
         <div class="card-body">
           <div class="card-title">Silla Río</div>
@@ -289,7 +356,7 @@
         </div>
       </article>
 
-      <!-- ALLEGRA -->
+      <!-- SILLA ALLEGRA -->
       <article class="card" data-categoria="plastico">
         <div class="card-img">
           <img src="imagenes/silla-allegra.jpg" alt="Silla Allegra">
@@ -306,41 +373,7 @@
         </div>
       </article>
 
-      <!-- PACK TULIP -->
-      <article class="card" data-categoria="pack">
-        <div class="card-img">
-          <img src="imagenes/silla-tulip.jpg" alt="Pack 4 Sillas Tulip">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Pack 4 Sillas Tulip</div>
-          <div class="card-price">$99.999 (x4)</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Tulip%20-%20$99.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-tulip.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- BANQUETA TULUM -->
-      <article class="card" data-categoria="entrelazada">
-        <div class="card-img">
-          <img src="imagenes/banqueta-tulum.jpg" alt="Banqueta Tulum entrelazada">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Banqueta Tulum entrelazada</div>
-          <div class="card-price">$44.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Banqueta%20Tulum%20entrelazada%20-%20$44.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/banqueta-tulum.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- TOLIX -->
+      <!-- SILLA TOLIX -->
       <article class="card" data-categoria="metal">
         <div class="card-img">
           <img src="imagenes/silla-tolix.jpg" alt="Silla Tolix">
@@ -357,6 +390,23 @@
         </div>
       </article>
 
+      <!-- SILLA GAMER GOOD GAME -->
+      <article class="card" data-categoria="gamer">
+        <div class="card-img">
+          <img src="imagenes/silla-gamer-goodgame.jpg" alt="Silla gamer Good Game">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Silla gamer Good Game</div>
+          <div class="card-price">$129.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20gamer%20Good%20Game%20-%20$129.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-gamer-goodgame.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </main>
 
@@ -367,10 +417,10 @@
   </a>
 
   <footer>
-    DecoSillas · Catálogo Premium · Envíos a Buenos Aires
+    DecoSillas · Catálogo de Sillas y Sillones · Envíos a Buenos Aires
   </footer>
 
-  <!-- SISTEMA DE WHATSAPP POR VENDEDOR -->
+  <!-- SISTEMA DE WHATSAPP POR VENDEDOR + FILTRO -->
   <script>
     const asesores = {
       damian: '5491122535108',
@@ -402,17 +452,18 @@
         const category = btn.dataset.filter;
 
         cards.forEach(card => {
-          if (category === "all") card.style.display = "block";
-          else card.style.display = card.dataset.categoria === category ? "block" : "none";
+          if (category === "all") {
+            card.style.display = "block";
+          } else {
+            card.style.display = card.dataset.categoria === category ? "block" : "none";
+          }
         });
       });
     });
   </script>
 
 </body>
-
 </html>
-
 
 
 
