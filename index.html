@@ -1,156 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DecoSillas - Catálogo de Sillas, Sillones y Lámparas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DecoSillas - Catálogo</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", system-ui, sans-serif;
-    }
+<style>
 
-    body {
-      background: #f4efe6;
-      color: #1b1b1b;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #efe7da;
+  margin: 0;
+  padding: 0;
+}
 
-    /* === HEADER PREMIUM ==== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(244, 239, 230, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #decfb9;
-    }
+/* HEADER */
+header {
+  background: #8b5e34;
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0.7rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+header button {
+  background: #25D366;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
 
-    .logo-box {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: .02em;
-    }
+/* FILTROS */
+.filtros {
+  padding: 15px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-    .logo-icon {
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #d4a373, #b08968);
-      border-radius: 10px;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-    }
+.filtros button {
+  border: 1px solid #b59b7d;
+  background: white;
+  border-radius: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
 
-    .btn-whatsapp-small {
-      padding: .45rem .9rem;
-      background: #25d366;
-      border-radius: 999px;
-      color: #fff;
-      font-size: .85rem;
-      font-weight: 700;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      cursor: pointer;
-      box-shadow: 0 3px 10px rgba(37, 211, 102, .4);
-    }
+.filtros button.active {
+  background: #8b5e34;
+  color: white;
+}
 
-    /* === FILTROS === */
-    .filterbar {
-      max-width: 1200px;
-      margin: 1rem auto 0.5rem;
-      padding: 0 1rem;
-      display: flex;
-      gap: .5rem;
-      flex-wrap: wrap;
-    }
+/* GRID PRODUCTOS */
+.grid {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
 
-    .filter-btn {
-      padding: .45rem .9rem;
-      background: #fff;
-      border: 1px solid #d7c6ac;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: .85rem;
-      transition: .2s;
-    }
+/* TARJETAS */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: #d4a373;
-      color: #fff;
-      border-color: #d4a373;
-    }
-
-    /* === GRID PREMIUM === */
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
-    }
-
-    @media(max-width:1000px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media(max-width:640px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* === CARD === */
-    .card {
-      background: #fff;
-      border-radius: 1.1rem;
-      overflow: hidden;
-      border: 1px solid #decfb9;
-      display: flex;
-      flex-direction: column;
-      transition: .25s;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, .05);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
-    }
-
+/* 🔥 IMAGEN PERFECTA – LLENA SIN RECORTAR MAL */
 .card-img {
   width: 100%;
   height: 280px;
   overflow: hidden;
-  background: #e6e0d5;
-  border-bottom: 1px solid #decfb9;
-  position: relative;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-img img {
@@ -160,540 +90,183 @@
   object-position: center;
 }
 
+/* INFO PRODUCTO */
+.card-info {
+  padding: 12px;
+}
 
-    .badge-out {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #c0392b;
-      color: #fff;
-      padding: .25rem .6rem;
-      border-radius: 999px;
-      font-size: .7rem;
-      font-weight: 700;
-    }
+.card-info h3 {
+  margin: 5px 0;
+  font-size: 18px;
+}
 
-    .card-body {
-      padding: 1rem 1rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: .35rem;
-    }
+.card-info p {
+  margin: 2px 0 12px 0;
+  color: #555;
+  font-weight: bold;
+}
 
-    .card-title {
-      font-size: 1rem;
-      font-weight: 700;
-    }
+/* BOTÓN WHATSAPP */
+.btn-wsp {
+  background: #25D366;
+  width: 120px;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
 
-    .card-price {
-      font-size: 1rem;
-      color: #b88655;
-      font-weight: 700;
-    }
+/* SIN STOCK */
+.sin-stock {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #b30000;
+  color: white;
+  font-size: 12px;
+  padding: 3px 7px;
+  border-radius: 6px;
+}
 
-    .card-footer {
-      margin-top: .7rem;
-    }
+</style>
 
-    .btn-whatsapp-card {
-      padding: .55rem 1rem;
-      background: #25d366;
-      color: #fff;
-      font-size: .87rem;
-      font-weight: 700;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, .4);
-      transition: .25s;
-    }
-
-    .btn-whatsapp-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(37, 211, 102, .6);
-    }
-
-    .btn-whatsapp-card.disabled {
-      background: #b3b3b3;
-      box-shadow: none;
-      cursor: default;
-    }
-
-    /* === BOTÓN FLOTANTE === */
-    .wa-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      padding: .9rem 1.2rem;
-      border-radius: 999px;
-      color: #fff;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(37, 211, 102, .5);
-      font-size: .9rem;
-      z-index: 99;
-      transition: .25s;
-    }
-
-    .wa-float:hover {
-      transform: scale(1.07);
-    }
-
-    footer {
-      margin-top: 2.5rem;
-      padding: 1.8rem 1rem;
-      text-align: center;
-      font-size: .8rem;
-      color: #856f56;
-      border-top: 1px solid #decfb9;
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav">
-      <div class="logo-box">
-        <div class="logo-icon">D</div>
-        <div>
-          DecoSillas
-          <div style="font-size: .74rem; opacity:.7;">Catálogo de Sillas, Sillones y Lámparas</div>
-        </div>
-      </div>
+<header>
+  <div>📦 DecoSillas - Catálogo</div>
+  <button onclick="window.open('https://wa.me/5491122535108','_blank')">Contacto</button>
+</header>
 
-      <a class="btn-whatsapp-small"
-        href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20un%20producto%20del%20cat%C3%A1logo">
-        🟢 Contacto
-      </a>
+<!-- FILTROS -->
+<div class="filtros">
+  <button class="active" onclick="filtrar('all')">Todos</button>
+  <button onclick="filtrar('yute')">Yute / Enrelazadas</button>
+  <button onclick="filtrar('madera')">Madera</button>
+  <button onclick="filtrar('plastico')">Plástico</button>
+  <button onclick="filtrar('metal')">Metal</button>
+  <button onclick="filtrar('gamer')">Gamer</button>
+  <button onclick="filtrar('lamparas')">Lámparas</button>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+
+  <!-- CAPRI -->
+  <div class="card yute">
+    <div class="card-img">
+      <img src="imagenes/capri.jpg">
     </div>
-  </header>
-
-  <!-- FILTROS -->
-  <div class="filterbar">
-    <button class="filter-btn active" data-filter="all">Todas</button>
-    <button class="filter-btn" data-filter="yute">Yute / Entrelazadas</button>
-    <button class="filter-btn" data-filter="madera">Madera</button>
-    <button class="filter-btn" data-filter="plastico">Plástico</button>
-    <button class="filter-btn" data-filter="metal">Metal</button>
-    <button class="filter-btn" data-filter="gamer">Gamer</button>
-    <button class="filter-btn" data-filter="lampara">Lámparas</button>
+    <div class="card-info">
+      <h3>Sillón Capri</h3>
+      <p>$59.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
   </div>
 
-  <!-- GRID -->
-  <main>
-    <div class="grid">
-
-      <!-- SILLÓN CAPRI -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/sillon-capri.jpg" alt="Sillón Capri">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Sillón Capri</div>
-          <div class="card-price">$59.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Sillon%20Capri%20-%20$59.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/sillon-capri.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA TULUM ENTRELAZADA -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/silla-tulum.jpg" alt="Silla Tulum entrelazada">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Tulum entrelazada</div>
-          <div class="card-price">$44.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Tulum%20entrelazada%20-%20$44.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-tulum.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- BANQUETA TULUM ENTRELAZADA -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/banqueta-tulum.jpg" alt="Banqueta Tulum entrelazada">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Banqueta Tulum entrelazada</div>
-          <div class="card-price">$44.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Banqueta%20Tulum%20entrelazada%20-%20$44.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/banqueta-tulum.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA BALI -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/silla-bali.jpg" alt="Silla Bali madera">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Bali</div>
-          <div class="card-price">$99.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Bali%20-%20$99.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-bali.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA RÍO -->
-      <article class="card" data-categoria="plastico">
-        <div class="card-img">
-          <img src="imagenes/silla-rio.jpg" alt="Silla Río plástica">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Río</div>
-          <div class="card-price">$19.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Rio%20-%20$19.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-rio.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA ALLEGRA -->
-      <article class="card" data-categoria="plastico">
-        <div class="card-img">
-          <img src="imagenes/silla-allegra.jpg" alt="Silla Allegra">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Allegra</div>
-          <div class="card-price">$19.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Allegra%20-%20$19.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-allegra.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA TOLIX -->
-      <article class="card" data-categoria="metal">
-        <div class="card-img">
-          <img src="imagenes/silla-tolix.jpg" alt="Silla Tolix">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Tolix</div>
-          <div class="card-price">$36.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Tolix%20-%20$36.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-tolix.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA GAMER GOOD GAME -->
-      <article class="card" data-categoria="gamer">
-        <div class="card-img">
-          <img src="imagenes/silla-gamer-goodgame.jpg" alt="Silla gamer Good Game">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla gamer Good Game</div>
-          <div class="card-price">$129.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20gamer%20Good%20Game%20-%20$129.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-gamer-goodgame.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- BANQUETA TOLIX (SIN STOCK) -->
-      <article class="card" data-categoria="metal">
-        <div class="card-img">
-          <span class="badge-out">SIN STOCK</span>
-          <img src="imagenes/banqueta-tolix.jpg" alt="Banqueta Tolix">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Banqueta Tolix</div>
-          <div class="card-price">$44.999</div>
-          <div class="card-footer">
-            <button class="btn-whatsapp-card disabled">
-              ❌ Sin stock
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- POLTRONA PETIRIBI -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/poltrona-petiribi.jpg" alt="Poltrona Petiribi">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Poltrona Petiribí</div>
-          <div class="card-price">$159.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Poltrona%20Petiribi%20-%20$159.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/poltrona-petiribi.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- MECEDORA -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/mecedora.jpg" alt="Mecedora">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Mecedora</div>
-          <div class="card-price">$139.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Mecedora%20-%20$139.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/mecedora.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- TULIP x4 -->
-      <article class="card" data-categoria="plastico">
-        <div class="card-img">
-          <img src="imagenes/tulip-pack-4.jpg" alt="Pack 4 Sillas Tulip">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Pack 4 Sillas Tulip</div>
-          <div class="card-price">$99.999 (x4)</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Tulip%20-%20$99.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/tulip-pack-4.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- WINDSOR x4 -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/windsor-pack-4.jpg" alt="Pack 4 Sillas Windsor">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Pack 4 Sillas Windsor</div>
-          <div class="card-price">$89.999 (x4)</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Windsor%20-%20$89.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/windsor-pack-4.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- MILAN x4 -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/milan-pack-4.jpg" alt="Pack 4 Sillas Milan">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Pack 4 Sillas Milan</div>
-          <div class="card-price">$89.999 (x4)</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Milan%20-%20$89.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/milan-pack-4.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- GERVASONI ENTRELAZADO -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/gervasoni-entrelazado.jpg" alt="Sillón Gervasoni entrelazado">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Gervasoni entrelazado</div>
-          <div class="card-price">$97.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Gervasoni%20entrelazado%20-%20$97.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/gervasoni-entrelazado.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- SILLA MALLORCA -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/silla-mallorca.jpg" alt="Silla Mallorca">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Silla Mallorca</div>
-          <div class="card-price">$49.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Mallorca%20-%20$49.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-mallorca.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- APOYABRAZOS ENTRELAZADO -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/apoyabrazos-entrelazado.jpg" alt="Silla con apoyabrazos entrelazada">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Apoyabrazos entrelazado</div>
-          <div class="card-price">$59.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20con%20apoyabrazos%20entrelazada%20-%20$59.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/apoyabrazos-entrelazado.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- HAMACA TAILANDESA -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/hamaca-tailandesa.jpg" alt="Hamaca tailandesa">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Hamaca tailandesa</div>
-          <div class="card-price">$169.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Hamaca%20tailandesa%20-%20$169.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/hamaca-tailandesa.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- LÁMPARA MARÍA -->
-      <article class="card" data-categoria="lampara">
-        <div class="card-img">
-          <img src="imagenes/lampara-maria.jpg" alt="Lámpara María">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Lámpara María</div>
-          <div class="card-price">$59.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Lampara%20Maria%20-%20$59.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/lampara-maria.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- LÁMPARA DIAMANTE -->
-      <article class="card" data-categoria="lampara">
-        <div class="card-img">
-          <img src="imagenes/lampara-diamante.jpg" alt="Lámpara Diamante">
-        </div>
-        <div class="card-body">
-          <div class="card-title">Lámpara Diamante</div>
-          <div class="card-price">$49.999</div>
-          <div class="card-footer">
-            <a class="btn-whatsapp-card"
-              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Lampara%20Diamante%20-%20$49.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/lampara-diamante.jpg">
-              💬 Consultar
-            </a>
-          </div>
-        </div>
-      </article>
-
+  <!-- TULUM -->
+  <div class="card yute">
+    <div class="card-img">
+      <img src="imagenes/tulum.jpg">
     </div>
-  </main>
+    <div class="card-info">
+      <h3>Silla Tulum entrelazada</h3>
+      <p>$44.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-  <!-- BOTÓN FLOTANTE -->
-  <a class="wa-float"
-    href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20un%20producto%20del%20cat%C3%A1logo">
-    💬 WhatsApp directo
-  </a>
+  <!-- BANQUETA TULUM -->
+  <div class="card yute">
+    <div class="card-img">
+      <img src="imagenes/banqueta.jpg">
+    </div>
+    <div class="card-info">
+      <h3>Banqueta Tulum</h3>
+      <p>$44.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-  <footer>
-    DecoSillas · Catálogo de Sillas, Sillones y Lámparas · Envíos a Buenos Aires
-  </footer>
+  <!-- BALI -->
+  <div class="card madera">
+    <div class="card-img">
+      <img src="imagenes/bali.jpg">
+    </div>
+    <div class="card-info">
+      <h3>Silla Bali</h3>
+      <p>$99.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-  <!-- SISTEMA DE WHATSAPP POR VENDEDOR + FILTRO -->
-  <script>
-    const asesores = {
-      damian: '5491122535108',
-      leonardo: '5491160457748',
-      marcela: '5491156405357',
-      estefano: '5491157828201',
-      magali: '5491162472194'
-    };
+  <!-- RIO -->
+  <div class="card plastico">
+    <div class="card-img">
+      <img src="imagenes/rio.jpg">
+    </div>
+    <div class="card-info">
+      <h3>Silla Río</h3>
+      <p>$19.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-    const params = new URLSearchParams(window.location.search);
-    const asesorKey = params.get('asesor')?.toLowerCase() || 'damian';
-    const finalNumber = asesores[asesorKey] || asesores['damian'];
+  <!-- ALLEGRA -->
+  <div class="card plastico">
+    <div class="card-img">
+      <img src="imagenes/allegra.jpg">
+    </div>
+    <div class="card-info">
+      <h3>Silla Allegra</h3>
+      <p>$19.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll("a[href*='NUMERO_PLACEHOLDER']").forEach(a => {
-        a.href = a.href.replace("NUMERO_PLACEHOLDER", finalNumber);
-      });
-    });
+  <!-- TOLIX SIN STOCK -->
+  <div class="card metal">
+    <div class="card-img">
+      <span class="sin-stock">SIN STOCK</span>
+      <img src="imagenes/tolix.jpg">
+    </div>
+    <div class="card-info">
+      <h3>Silla Tolix</h3>
+      <p>$36.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-    // FILTRO DE PRODUCTOS
-    const filterBtns = document.querySelectorAll(".filter-btn");
-    const cards = document.querySelectorAll(".card");
+  <!-- GAMER -->
+  <div class="card gamer">
+    <div class="card-img">
+      <img src="imagenes/gamer.jpg">
+    </div>
+    <div class="card-info">
+      <h3>Silla Gamer</h3>
+      <p>$129.999</p>
+      <button class="btn-wsp">Consultar</button>
+    </div>
+  </div>
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+</div>
 
-        const category = btn.dataset.filter;
+<script>
+function filtrar(cat) {
+  document.querySelectorAll('.filtros button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
 
-        cards.forEach(card => {
-          if (category === "all") {
-            card.style.display = "block";
-          } else {
-            card.style.display = card.dataset.categoria === category ? "block" : "none";
-          }
-        });
-      });
-    });
-  </script>
+  document.querySelectorAll('.card').forEach(c => {
+    if (cat === "all") c.style.display = "block";
+    else c.style.display = c.classList.contains(cat) ? "block" : "none";
+  });
+}
+</script>
 
 </body>
 </html>
-
-
-
-
-
 
 
 
