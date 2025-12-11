@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DecoSillas - Catálogo de Sillas y Sillones</title>
+  <title>DecoSillas - Catálogo de Sillas, Sillones y Lámparas</title>
 
   <style>
     * {
@@ -150,6 +150,7 @@
       overflow: hidden;
       background: #e6e0d5;
       border-bottom: 1px solid #decfb9;
+      position: relative;
     }
 
     .card-img img {
@@ -157,6 +158,18 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+    }
+
+    .badge-out {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #c0392b;
+      color: #fff;
+      padding: .25rem .6rem;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 700;
     }
 
     .card-body {
@@ -200,6 +213,12 @@
     .btn-whatsapp-card:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 18px rgba(37, 211, 102, .6);
+    }
+
+    .btn-whatsapp-card.disabled {
+      background: #b3b3b3;
+      box-shadow: none;
+      cursor: default;
     }
 
     /* === BOTÓN FLOTANTE === */
@@ -246,12 +265,12 @@
         <div class="logo-icon">D</div>
         <div>
           DecoSillas
-          <div style="font-size: .74rem; opacity:.7;">Catálogo de Sillas y Sillones</div>
+          <div style="font-size: .74rem; opacity:.7;">Catálogo de Sillas, Sillones y Lámparas</div>
         </div>
       </div>
 
       <a class="btn-whatsapp-small"
-        href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20una%20silla">
+        href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20un%20producto%20del%20cat%C3%A1logo">
         🟢 Contacto
       </a>
     </div>
@@ -265,6 +284,7 @@
     <button class="filter-btn" data-filter="plastico">Plástico</button>
     <button class="filter-btn" data-filter="metal">Metal</button>
     <button class="filter-btn" data-filter="gamer">Gamer</button>
+    <button class="filter-btn" data-filter="lampara">Lámparas</button>
   </div>
 
   <!-- GRID -->
@@ -407,17 +427,221 @@
         </div>
       </article>
 
+      <!-- BANQUETA TOLIX (SIN STOCK) -->
+      <article class="card" data-categoria="metal">
+        <div class="card-img">
+          <span class="badge-out">SIN STOCK</span>
+          <img src="imagenes/banqueta-tolix.jpg" alt="Banqueta Tolix">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Banqueta Tolix</div>
+          <div class="card-price">$44.999</div>
+          <div class="card-footer">
+            <button class="btn-whatsapp-card disabled">
+              ❌ Sin stock
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- POLTRONA PETIRIBI -->
+      <article class="card" data-categoria="madera">
+        <div class="card-img">
+          <img src="imagenes/poltrona-petiribi.jpg" alt="Poltrona Petiribi">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Poltrona Petiribí</div>
+          <div class="card-price">$159.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Poltrona%20Petiribi%20-%20$159.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/poltrona-petiribi.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MECEDORA -->
+      <article class="card" data-categoria="madera">
+        <div class="card-img">
+          <img src="imagenes/mecedora.jpg" alt="Mecedora">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Mecedora</div>
+          <div class="card-price">$139.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Mecedora%20-%20$139.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/mecedora.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- TULIP x4 -->
+      <article class="card" data-categoria="plastico">
+        <div class="card-img">
+          <img src="imagenes/tulip-pack-4.jpg" alt="Pack 4 Sillas Tulip">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Pack 4 Sillas Tulip</div>
+          <div class="card-price">$99.999 (x4)</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Tulip%20-%20$99.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/tulip-pack-4.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- WINDSOR x4 -->
+      <article class="card" data-categoria="madera">
+        <div class="card-img">
+          <img src="imagenes/windsor-pack-4.jpg" alt="Pack 4 Sillas Windsor">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Pack 4 Sillas Windsor</div>
+          <div class="card-price">$89.999 (x4)</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Windsor%20-%20$89.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/windsor-pack-4.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILAN x4 -->
+      <article class="card" data-categoria="madera">
+        <div class="card-img">
+          <img src="imagenes/milan-pack-4.jpg" alt="Pack 4 Sillas Milan">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Pack 4 Sillas Milan</div>
+          <div class="card-price">$89.999 (x4)</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Milan%20-%20$89.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/milan-pack-4.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- GERVASONI ENTRELAZADO -->
+      <article class="card" data-categoria="yute">
+        <div class="card-img">
+          <img src="imagenes/gervasoni-entrelazado.jpg" alt="Sillón Gervasoni entrelazado">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Gervasoni entrelazado</div>
+          <div class="card-price">$97.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20el%20Gervasoni%20entrelazado%20-%20$97.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/gervasoni-entrelazado.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SILLA MALLORCA -->
+      <article class="card" data-categoria="madera">
+        <div class="card-img">
+          <img src="imagenes/silla-mallorca.jpg" alt="Silla Mallorca">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Silla Mallorca</div>
+          <div class="card-price">$49.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20Mallorca%20-%20$49.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/silla-mallorca.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- APOYABRAZOS ENTRELAZADO -->
+      <article class="card" data-categoria="yute">
+        <div class="card-img">
+          <img src="imagenes/apoyabrazos-entrelazado.jpg" alt="Silla con apoyabrazos entrelazada">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Apoyabrazos entrelazado</div>
+          <div class="card-price">$59.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Silla%20con%20apoyabrazos%20entrelazada%20-%20$59.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/apoyabrazos-entrelazado.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- HAMACA TAILANDESA -->
+      <article class="card" data-categoria="yute">
+        <div class="card-img">
+          <img src="imagenes/hamaca-tailandesa.jpg" alt="Hamaca tailandesa">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Hamaca tailandesa</div>
+          <div class="card-price">$169.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Hamaca%20tailandesa%20-%20$169.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/hamaca-tailandesa.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- LÁMPARA MARÍA -->
+      <article class="card" data-categoria="lampara">
+        <div class="card-img">
+          <img src="imagenes/lampara-maria.jpg" alt="Lámpara María">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Lámpara María</div>
+          <div class="card-price">$59.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Lampara%20Maria%20-%20$59.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/lampara-maria.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- LÁMPARA DIAMANTE -->
+      <article class="card" data-categoria="lampara">
+        <div class="card-img">
+          <img src="imagenes/lampara-diamante.jpg" alt="Lámpara Diamante">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Lámpara Diamante</div>
+          <div class="card-price">$49.999</div>
+          <div class="card-footer">
+            <a class="btn-whatsapp-card"
+              href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20comprar%20la%20Lampara%20Diamante%20-%20$49.999%20Foto:%20https://decosillas-web.vercel.app/imagenes/lampara-diamante.jpg">
+              💬 Consultar
+            </a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </main>
 
   <!-- BOTÓN FLOTANTE -->
   <a class="wa-float"
-    href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20una%20silla">
+    href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola%20quiero%20consultar%20por%20un%20producto%20del%20cat%C3%A1logo">
     💬 WhatsApp directo
   </a>
 
   <footer>
-    DecoSillas · Catálogo de Sillas y Sillones · Envíos a Buenos Aires
+    DecoSillas · Catálogo de Sillas, Sillones y Lámparas · Envíos a Buenos Aires
   </footer>
 
   <!-- SISTEMA DE WHATSAPP POR VENDEDOR + FILTRO -->
@@ -464,7 +688,6 @@
 
 </body>
 </html>
-
 
 
 
