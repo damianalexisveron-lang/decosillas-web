@@ -3,340 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DecoSillas - Catálogo de Sillas, Sillones y Lámparas</title>
+  <title>DecoSillas - Catálogo</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-
-    body {
-      background: #f4efe6;
-      color: #1b1b1b;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    body{background:#f4efe6;color:#1b1b1b}
 
     /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: #8b5e34;
-      color: #fff;
-      padding: 0.7rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    header{
+      position:sticky;top:0;z-index:50;
+      background:#8b5e34;color:#fff;
+      padding:.75rem 1rem;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem
+    }
+    header .brand{font-weight:800;font-size:1.05rem;line-height:1}
+    header small{font-size:.75rem;opacity:.9;display:block;margin-top:.15rem}
+
+    .btn-header-whatsapp{
+      display:inline-flex;align-items:center;gap:.45rem;
+      padding:.55rem .95rem;
+      background:#25d366;color:#fff;font-weight:800;font-size:.85rem;
+      border:none;border-radius:999px;cursor:pointer;
+      box-shadow:0 3px 10px rgba(37,211,102,.45)
+    }
+    .btn-header-whatsapp:hover{background:#1ebe5d}
+
+    /* TRUST BAR */
+    .trust-bar{
+      max-width:1200px;margin:.5rem auto 0;
+      padding:0 1rem .4rem;
+      display:flex;gap:.5rem;flex-wrap:wrap
+    }
+    .trust-pill{
+      background:#fff;border:1px solid #decfb9;
+      border-radius:999px;padding:.25rem .7rem;
+      font-size:.8rem;color:#7b654f
     }
 
-    header .brand {
-      font-weight: 700;
-      font-size: 1.05rem;
+    /* FILTERS */
+    .filterbar{
+      max-width:1200px;margin:.25rem auto .75rem;
+      padding:0 1rem;
+      display:flex;gap:.5rem;flex-wrap:wrap
+    }
+    .filter-btn{
+      padding:.42rem .9rem;
+      background:#fff;border-radius:999px;
+      border:1px solid #b89a75;
+      font-size:.8rem;cursor:pointer
+    }
+    .filter-btn.active,.filter-btn:hover{background:#8b5e34;color:#fff;border-color:#8b5e34}
+
+    main{max-width:1200px;margin:0 auto;padding:1rem}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.4rem
+    }
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+    /* CARD */
+    .card{
+      background:#fff;border-radius:1rem;
+      border:1px solid #decfb9;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+      overflow:hidden;
+      display:flex;flex-direction:column;
+      transition:transform .18s ease, box-shadow .18s ease;
+      min-height: 100%;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+
+    /* IMAGE AREA (con bordes, se ve la pieza completa) */
+    .card-img{
+      width:100%;
+      height:260px;
+      background:#e6e0d5;
+      border-bottom:1px solid #decfb9;
+      position:relative;
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .card-img img{
+      max-width:100%;
+      max-height:100%;
+      width:auto;height:auto;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+      user-select:none;
+      -webkit-user-drag:none;
     }
 
-    header small {
-      font-size: 0.75rem;
-      opacity: 0.9;
-      display: block;
+    .badge-out{
+      position:absolute;top:8px;left:8px;z-index:3;
+      background:#c0392b;color:#fff;font-size:.7rem;font-weight:900;
+      padding:.2rem .6rem;border-radius:999px
     }
 
-    .btn-header-whatsapp {
-      padding: 0.45rem 0.9rem 0.45rem 2.2rem;
-      background: #25d366 url('imagenes/whatsapp-logo.png') no-repeat 0.7rem center;
-      background-size: 17px 17px;
-      border-radius: 999px;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(37, 211, 102, 0.5);
+    .card-body{
+      padding:.9rem 1rem 1.05rem;
+      display:flex;
+      flex-direction:column;
+      flex:1;               /* CLAVE: estira el body */
+      gap:.35rem;
     }
 
-    /* BARRA DE CONFIANZA */
-    .trust-bar {
-      max-width: 1200px;
-      margin: 0.4rem auto 0;
-      padding: 0.4rem 1rem;
-      font-size: 0.8rem;
-      color: #7b654f;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    .card-title-row{
+      display:flex;justify-content:space-between;align-items:center;gap:.5rem;
+    }
+    .card-title{font-size:.98rem;font-weight:900}
+    .chip{
+      font-size:.7rem;font-weight:800;
+      padding:.12rem .55rem;border-radius:999px;
+      background:#f0e4d4;color:#8b5e34;white-space:nowrap
+    }
+    .card-price{font-size:.95rem;font-weight:900;color:#b88655}
+    .card-desc{
+      font-size:.78rem;color:#6a5b48;
+      line-height:1.25;
+      min-height: 2.6em;    /* mantiene alineación aunque varíe el texto */
     }
 
-    .trust-pill {
-      background: #fff;
-      border-radius: 999px;
-      padding: 0.25rem 0.7rem;
-      border: 1px solid #decfb9;
+    /* BOTON WHATSAPP (SVG PRO) */
+    .btn-whatsapp-card{
+      margin-top:auto;      /* CLAVE: empuja el botón al fondo */
+      display:inline-flex;align-items:center;gap:.45rem;
+      padding:.58rem 1rem;
+      background:#25d366;color:#fff;
+      font-size:.85rem;font-weight:900;
+      border-radius:999px;border:none;cursor:pointer;
+      text-decoration:none;
+      box-shadow:0 4px 10px rgba(37,211,102,.5);
+      width: fit-content;
     }
+    .btn-whatsapp-card:hover{background:#1ebe5d}
+    .btn-whatsapp-card svg{width:18px;height:18px;color:#fff;display:block}
 
-    /* FILTROS */
-    .filterbar {
-      max-width: 1200px;
-      margin: 0.4rem auto 0.6rem;
-      padding: 0 1rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    .btn-whatsapp-card.disabled{
+      background:#bdbdbd;box-shadow:none;cursor:default
     }
+    .btn-whatsapp-card.disabled svg{display:none}
 
-    .filter-btn {
-      padding: 0.4rem 0.9rem;
-      background: #fff;
-      border-radius: 999px;
-      border: 1px solid #b89a75;
-      font-size: 0.8rem;
-      cursor: pointer;
+    footer{padding:1.5rem 1rem 2rem;text-align:center;font-size:.8rem;color:#856f56}
+
+    /* FLOATING WHATSAPP */
+    .wa-float{
+      position:fixed;right:16px;bottom:16px;z-index:60;
+      background:#25d366;color:#fff;
+      padding:.78rem 1.05rem;
+      border-radius:999px;
+      font-size:.85rem;font-weight:900;
+      display:inline-flex;align-items:center;gap:.5rem;
+      text-decoration:none;
+      box-shadow:0 6px 18px rgba(37,211,102,.55)
     }
+    .wa-float:hover{background:#1ebe5d}
+    .wa-float svg{width:18px;height:18px;color:#fff;display:block}
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: #8b5e34;
-      color: #fff;
-      border-color: #8b5e34;
+    /* CARRUSEL */
+    .card-img.carousel img{
+      position:absolute;left:50%;top:50%;
+      transform:translate(-50%,-50%);
+      opacity:0;transition:opacity .25s ease-in-out;
     }
+    .card-img.carousel img.active{opacity:1}
 
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
+    .carousel-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:28px;height:28px;border-radius:999px;border:none;
+      background:rgba(0,0,0,.55);color:#fff;font-size:16px;
+      cursor:pointer;z-index:4;
+      display:flex;align-items:center;justify-content:center;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
-    }
-
-    @media (max-width: 1000px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      border: 1px solid #decfb9;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-    }
-
-    /* IMÁGENES CON BORDES (se ve la pieza completa) */
-    .card-img {
-      width: 100%;
-      height: 260px;
-      overflow: hidden;
-      background: #e6e0d5;
-      border-bottom: 1px solid #decfb9;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card-img img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-    }
-
-    .badge-out {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: #c0392b;
-      color: #fff;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      font-weight: 700;
-      z-index: 2;
-    }
-
-    .card-body {
-      padding: 0.9rem 1rem 1.1rem;
-    }
-
-    .card-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.25rem;
-      gap: 0.4rem;
-    }
-
-    .card-title {
-      font-size: 0.98rem;
-      font-weight: 700;
-    }
-
-    .chip {
-      font-size: 0.7rem;
-      padding: 0.1rem 0.5rem;
-      border-radius: 999px;
-      background: #f0e4d4;
-      color: #8b5e34;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .card-price {
-      font-size: 0.95rem;
-      color: #b88655;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .card-desc {
-      font-size: 0.78rem;
-      color: #6a5b48;
-      margin-bottom: 0.7rem;
-      min-height: 2em;
-    }
-
-    /* BOTONES WHATSAPP CON LOGO */
-    .btn-whatsapp-card {
-      padding: 0.55rem 1rem 0.55rem 2.4rem;
-      background: #25d366 url('imagenes/whatsapp-logo.png') no-repeat 0.8rem center;
-      background-size: 18px 18px;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.5);
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .btn-whatsapp-card.disabled {
-      background: #bbbbbb;
-      background-image: none;
-      box-shadow: none;
-      cursor: default;
-    }
-
-    footer {
-      padding: 1.5rem 1rem 2rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #856f56;
-    }
-
-    /* BOTÓN FLOTANTE WHATSAPP */
-    .wa-float {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 60;
-      background: #25d366 url('imagenes/whatsapp-logo.png') no-repeat 0.7rem center;
-      background-size: 18px 18px;
-      color: #fff;
-      padding: 0.75rem 1.1rem 0.75rem 2.3rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      box-shadow: 0 5px 16px rgba(37, 211, 102, 0.6);
-    }
-
-    /* ----- CARRUSEL DENTRO DE CADA PRODUCTO ----- */
-
-    .card-img.carousel {
-      position: relative;
-    }
-
-    .card-img.carousel img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      object-position: center;
-      opacity: 0;
-      transition: opacity 0.25s ease-in-out;
-    }
-
-    .card-img.carousel img.active {
-      opacity: 1;
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-      z-index: 3;
-    }
-
-    .carousel-btn.prev {
-      left: 6px;
-    }
-
-    .carousel-btn.next {
-      right: 6px;
-    }
+    .carousel-btn.prev{left:8px}
+    .carousel-btn.next{right:8px}
   </style>
 </head>
 
 <body>
+
+  <!-- SVG ICONOS (WhatsApp) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="icon-whatsapp" viewBox="0 0 32 32">
+      <path fill="currentColor" d="M19.11 17.59c-.27-.14-1.6-.79-1.84-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.71-1.33-1.6-1.49-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.46-.61-.47l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.64 1.12 2.82c.14.18 1.93 2.95 4.67 4.13.65.28 1.16.45 1.56.57.66.21 1.27.18 1.75.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+      <path fill="currentColor" d="M26.67 5.33A13.24 13.24 0 0 0 16.02 1C8.83 1 3 6.83 3 14.02c0 2.31.6 4.56 1.74 6.55L3 31l10.67-1.7a13 13 0 0 0 6.35 1.62h.01C27.2 30.92 33 25.1 33 17.9c0-3.48-1.36-6.75-3.33-8.57zM16.02 28.66h-.01a10.9 10.9 0 0 1-5.56-1.52l-.4-.24-6.33 1.01 1.03-6.17-.26-.43A10.87 10.87 0 0 1 5.14 14c0-6 4.88-10.88 10.88-10.88 2.9 0 5.62 1.13 7.67 3.19A10.8 10.8 0 0 1 26.9 14c0 6-4.88 10.66-10.88 10.66z"/>
+    </symbol>
+  </svg>
+
   <header>
     <div>
       <span class="brand">DecoSillas</span>
       <small>Catálogo de Sillas, Sillones y Lámparas</small>
     </div>
-    <button class="btn-header-whatsapp">
+    <button class="btn-header-whatsapp" id="btnHeaderWhats">
+      <svg><use href="#icon-whatsapp"></use></svg>
       Contacto
     </button>
   </header>
 
-  <!-- Barra de confianza -->
   <section class="trust-bar">
     <span class="trust-pill">🚚 Envíos 24/48 hs en Buenos Aires</span>
     <span class="trust-pill">💰 Pagás al recibir</span>
     <span class="trust-pill">📍 Retiros en Olivos, Vicente López</span>
   </section>
 
-  <!-- FILTROS -->
   <div class="filterbar">
     <button class="filter-btn active" data-filter="all">Todas</button>
     <button class="filter-btn" data-filter="yute">Yute / Entrelazadas</button>
@@ -353,10 +226,9 @@
       <!-- Sillón Capri (CARRUSEL) -->
       <article class="card" data-categoria="yute">
         <div class="card-img carousel">
-          <img src="imagenes/sillon-capri-1.jpg" alt="Sillón Capri solo" class="active">
-          <img src="imagenes/sillon-capri-2-mesa.jpg" alt="Sillón Capri con mesa y sillas">
-          <img src="imagenes/sillon-capri-3-colores.jpg" alt="Sillón Capri en distintos ambientes">
-
+          <img src="imagenes/sillon-capri-1.jpg" alt="Sillón Capri" class="active">
+          <img src="imagenes/sillon-capri-2-mesa.jpg" alt="Sillón Capri con mesa">
+          <img src="imagenes/sillon-capri-3-colores.jpg" alt="Sillón Capri en ambientes">
           <button class="carousel-btn prev">‹</button>
           <button class="carousel-btn next">›</button>
         </div>
@@ -367,9 +239,8 @@
           </div>
           <div class="card-price">$59.999</div>
           <div class="card-desc">Sillón redondo tejido en yute sintético, ideal living o galería.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20el%20Sillon%20Capri%20-%20$59.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20el%20Sillon%20Capri%20-%20$59.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -386,9 +257,8 @@
           </div>
           <div class="card-price">$44.999</div>
           <div class="card-desc">Estructura metálica + tejido entrelazado, súper resistente.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20Tulum%20entrelazada%20-%20$44.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Silla%20Tulum%20entrelazada%20-%20$44.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -405,9 +275,8 @@
           </div>
           <div class="card-price">$44.999</div>
           <div class="card-desc">Altura barra, ideal cocina o barra de quincho.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Banqueta%20Tulum%20entrelazada%20-%20$44.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Banqueta%20Tulum%20entrelazada%20-%20$44.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -424,19 +293,17 @@
           </div>
           <div class="card-price">$99.999</div>
           <div class="card-desc">Silla de petiribí lustrado, perfecta para comedor moderno.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20Bali%20-%20$99.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Silla%20Bali%20-%20$99.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
 
-      <!-- Silla Río (CARRUSEL BLANCO/NEGRO) -->
+      <!-- Silla Río (CARRUSEL) -->
       <article class="card" data-categoria="plastico">
         <div class="card-img carousel">
           <img src="imagenes/silla-rio-blanca.jpg" alt="Silla Río blanca" class="active">
           <img src="imagenes/silla-rio-negra.jpg" alt="Silla Río negra">
-
           <button class="carousel-btn prev">‹</button>
           <button class="carousel-btn next">›</button>
         </div>
@@ -447,19 +314,17 @@
           </div>
           <div class="card-price">$19.999</div>
           <div class="card-desc">Disponible en blanco y negro. Ultra resistente y moderna.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20Rio%20-%20$19.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Silla%20Rio%20-%20$19.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
 
-      <!-- Silla Allegra (CARRUSEL NEGRA/BLANCA) -->
+      <!-- Silla Allegra (CARRUSEL) -->
       <article class="card" data-categoria="plastico">
         <div class="card-img carousel">
           <img src="imagenes/silla-allegra-negra.jpg" alt="Silla Allegra negra" class="active">
           <img src="imagenes/silla-allegra-blanca.jpg" alt="Silla Allegra blanca">
-
           <button class="carousel-btn prev">‹</button>
           <button class="carousel-btn next">›</button>
         </div>
@@ -470,9 +335,8 @@
           </div>
           <div class="card-price">$19.999</div>
           <div class="card-desc">Versión negra y blanca. La clásica Allegra que nunca falla.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20Allegra%20-%20$19.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Silla%20Allegra%20-%20$19.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -489,22 +353,17 @@
           </div>
           <div class="card-price">$36.999</div>
           <div class="card-desc">Silla Tolix metálica, perfecta para bares y galerías.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20Tolix%20-%20$36.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Silla%20Tolix%20-%20$36.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
 
-      <!-- Silla gamer Good Game (CARRUSEL 2 COLORES) -->
+      <!-- Silla gamer Good Game (CARRUSEL) -->
       <article class="card" data-categoria="gamer">
         <div class="card-img carousel">
-          <img src="imagenes/silla-gamer-goodgame-gris.jpg"
-               alt="Silla gamer Good Game gris"
-               class="active">
-          <img src="imagenes/silla-gamer-goodgame-roja.jpg"
-               alt="Silla gamer Good Game roja">
-
+          <img src="imagenes/silla-gamer-goodgame-gris.jpg" alt="Silla gamer gris" class="active">
+          <img src="imagenes/silla-gamer-goodgame-roja.jpg" alt="Silla gamer roja">
           <button class="carousel-btn prev">‹</button>
           <button class="carousel-btn next">›</button>
         </div>
@@ -515,9 +374,8 @@
           </div>
           <div class="card-price">$129.999</div>
           <div class="card-desc">Reclinable, regulable y súper cómoda. Dos combinaciones de color.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20gamer%20Good%20Game%20-%20$129.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Silla%20gamer%20Good%20Game%20-%20$129.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -539,177 +397,6 @@
         </div>
       </article>
 
-      <!-- Poltrona Petiribi -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/poltrona-petiribi.jpg" alt="Poltrona Petiribí">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Poltrona Petiribi</span>
-            <span class="chip">Madera</span>
-          </div>
-          <div class="card-price">$159.999</div>
-          <div class="card-desc">Poltrona en petiribí, línea premium para living.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Poltrona%20Petiribi%20-%20$159.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Mecedora -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/mecedora.jpg" alt="Mecedora">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Mecedora</span>
-            <span class="chip">Madera</span>
-          </div>
-          <div class="card-price">$139.999</div>
-          <div class="card-desc">Mecedora de madera, cómoda y decorativa.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Mecedora%20-%20$139.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Pack 4 Tulip -->
-      <article class="card" data-categoria="plastico">
-        <div class="card-img">
-          <img src="imagenes/tulip-pack-4.jpg" alt="Pack 4 Sillas Tulip">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Pack 4 Sillas Tulip</span>
-            <span class="chip">Plástico</span>
-          </div>
-          <div class="card-price">$99.999</div>
-          <div class="card-desc">Pack de 4 sillas Tulip, ideales para comedor moderno.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Tulip%20-%20$99.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Pack 4 Windsor -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/windsor-pack-4.jpg" alt="Pack 4 Sillas Windsor">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Pack 4 Sillas Windsor</span>
-            <span class="chip">Madera</span>
-          </div>
-          <div class="card-price">$89.999</div>
-          <div class="card-desc">Pack de 4 Windsor, estilo clásico renovado.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Windsor%20-%20$89.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Pack 4 Milan -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/milan-pack-4.jpg" alt="Pack 4 Sillas Milan">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Pack 4 Sillas Milan</span>
-            <span class="chip">Madera</span>
-          </div>
-          <div class="card-price">$89.999</div>
-          <div class="card-desc">Pack de 4 Milan, respaldo cómodo y firme.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20el%20Pack%20de%204%20Sillas%20Milan%20-%20$89.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Gervasoni entrelazado -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/gervasoni-entrelazado.jpg" alt="Gervasoni entrelazado">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Gervasoni entrelazado</span>
-            <span class="chip">Yute</span>
-          </div>
-          <div class="card-price">$97.999</div>
-          <div class="card-desc">Butaca estilo Gervasoni, súper cómoda y decorativa.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20el%20Gervasoni%20entrelazado%20-%20$97.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Silla Mallorca -->
-      <article class="card" data-categoria="madera">
-        <div class="card-img">
-          <img src="imagenes/silla-mallorca.jpg" alt="Silla Mallorca">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Silla Mallorca</span>
-            <span class="chip">Madera</span>
-          </div>
-          <div class="card-price">$49.999</div>
-          <div class="card-desc">Silla de madera con diseño curvo, muy cómoda.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20Mallorca%20-%20$49.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Apoyabrazos entrelazado -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/apoyabrazos-entrelazado.jpg" alt="Apoyabrazos entrelazado">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Apoyabrazos entrelazado</span>
-            <span class="chip">Yute</span>
-          </div>
-          <div class="card-price">$59.999</div>
-          <div class="card-desc">Silla con apoyabrazos y tejido entrelazado.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Silla%20con%20apoyabrazos%20entrelazada%20-%20$59.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
-      <!-- Hamaca tailandesa -->
-      <article class="card" data-categoria="yute">
-        <div class="card-img">
-          <img src="imagenes/hamaca-tailandesa.jpg" alt="Hamaca tailandesa">
-        </div>
-        <div class="card-body">
-          <div class="card-title-row">
-            <span class="card-title">Hamaca tailandesa</span>
-            <span class="chip">Yute</span>
-          </div>
-          <div class="card-price">$169.999</div>
-          <div class="card-desc">Hamaca colgante de yute sintético, ideal galería o balcón.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Hamaca%20tailandesa%20-%20$169.999">
-            Consultar
-          </a>
-        </div>
-      </article>
-
       <!-- Lámpara María -->
       <article class="card" data-categoria="lampara">
         <div class="card-img">
@@ -722,9 +409,8 @@
           </div>
           <div class="card-price">$59.999</div>
           <div class="card-desc">Lámpara colgante artesanal tipo canasto.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Lampara%20Maria%20-%20$59.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Lampara%20Maria%20-%20$59.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -741,9 +427,8 @@
           </div>
           <div class="card-price">$49.999</div>
           <div class="card-desc">Lámpara estilo diamante, ideal dormitorio o living.</div>
-          <a class="btn-whatsapp-card"
-             href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20comprar%20la%20Lampara%20Diamante%20-%20$49.999">
-            Consultar
+          <a class="btn-whatsapp-card" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20la%20Lampara%20Diamante%20-%20$49.999">
+            <svg><use href="#icon-whatsapp"></use></svg> Consultar
           </a>
         </div>
       </article>
@@ -751,8 +436,8 @@
     </div>
   </main>
 
-  <a class="wa-float"
-     href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20consultar%20por%20el%20catalogo">
+  <a class="wa-float" id="waFloat" href="https://wa.me/NUMERO_PLACEHOLDER?text=Hola!%20Quiero%20consultar%20por%20el%20catalogo">
+    <svg><use href="#icon-whatsapp"></use></svg>
     WhatsApp directo
   </a>
 
@@ -761,7 +446,7 @@
   </footer>
 
   <script>
-    /* Vendedores */
+    // Vendedores
     const asesores = {
       damian: '5491122535108',
       leonardo: '5491160457748',
@@ -772,65 +457,47 @@
 
     const params = new URLSearchParams(window.location.search);
     const asesorKey = (params.get('asesor') || 'damian').toLowerCase();
-    const finalNumber = asesores[asesorKey] || asesores['damian'];
+    const finalNumber = asesores[asesorKey] || asesores.damian;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      /* Reemplazar NUMERO_PLACEHOLDER en todos los enlaces de WhatsApp */
-      document.querySelectorAll("a[href*='NUMERO_PLACEHOLDER']").forEach(a => {
-        a.href = a.href.replace('NUMERO_PLACEHOLDER', finalNumber);
+    // Reemplaza el placeholder en todos los links
+    document.querySelectorAll("a[href*='NUMERO_PLACEHOLDER']").forEach(a => {
+      a.href = a.href.replace('NUMERO_PLACEHOLDER', finalNumber);
+    });
+
+    // Header whatsapp
+    document.getElementById('btnHeaderWhats').addEventListener('click', () => {
+      window.open(`https://wa.me/${finalNumber}?text=Hola!%20Quiero%20consultar%20por%20el%20catalogo`, '_blank');
+    });
+
+    // Float whatsapp
+    const waFloat = document.getElementById('waFloat');
+    waFloat.href = `https://wa.me/${finalNumber}?text=Hola!%20Quiero%20consultar%20por%20el%20catalogo`;
+
+    // Carruseles
+    document.querySelectorAll('.card-img.carousel').forEach(carousel => {
+      const images = carousel.querySelectorAll('img');
+      if (images.length <= 1) return;
+
+      let index = 0;
+      const show = (i) => images.forEach((img, idx) => img.classList.toggle('active', idx === i));
+
+      const prev = carousel.querySelector('.carousel-btn.prev');
+      const next = carousel.querySelector('.carousel-btn.next');
+
+      prev?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        index = (index - 1 + images.length) % images.length;
+        show(index);
       });
 
-      const headerBtn = document.querySelector('.btn-header-whatsapp');
-      if (headerBtn) {
-        headerBtn.onclick = () =>
-          window.open(
-            `https://wa.me/${finalNumber}?text=Hola!%20Quiero%20consultar%20por%20el%20catalogo`,
-            '_blank'
-          );
-      }
-
-      const floatBtn = document.querySelector('.wa-float');
-      if (floatBtn) {
-        floatBtn.href = `https://wa.me/${finalNumber}?text=Hola!%20Quiero%20consultar%20por%20el%20catalogo`;
-      }
-
-      /* Carruseles */
-      const carousels = document.querySelectorAll('.card-img.carousel');
-
-      carousels.forEach(carousel => {
-        const images = carousel.querySelectorAll('img');
-        if (images.length <= 1) return;
-
-        let index = 0;
-
-        const showImage = (i) => {
-          images.forEach((img, idx) => {
-            img.classList.toggle('active', idx === i);
-          });
-        };
-
-        const prevBtn = carousel.querySelector('.carousel-btn.prev');
-        const nextBtn = carousel.querySelector('.carousel-btn.next');
-
-        if (prevBtn) {
-          prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            index = (index - 1 + images.length) % images.length;
-            showImage(index);
-          });
-        }
-
-        if (nextBtn) {
-          nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            index = (index + 1) % images.length;
-            showImage(index);
-          });
-        }
+      next?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        index = (index + 1) % images.length;
+        show(index);
       });
     });
 
-    /* Filtros */
+    // Filtros
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.card');
 
@@ -839,18 +506,16 @@
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const cat = btn.dataset.filter;
+
         cards.forEach(card => {
-          if (cat === 'all') {
-            card.style.display = 'block';
-          } else {
-            card.style.display = card.dataset.categoria === cat ? 'block' : 'none';
-          }
+          card.style.display = (cat === 'all' || card.dataset.categoria === cat) ? 'flex' : 'none';
         });
       });
     });
   </script>
 </body>
 </html>
+
 
 
 
