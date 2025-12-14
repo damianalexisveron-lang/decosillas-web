@@ -1,200 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DecoSillas – Catálogo</title>
 
 <style>
 :root{
-  --bg:#f5efe4;
-  --card:#ffffff;
-  --beige:#e9e2d6;
-  --marron:#8b5e34;
-  --verde:#25d366;
+  --bg:#f6efe3;
+  --card:#efe7d9;
+  --primary:#8b5a2b;
+  --wa:#25d366;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;}
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 
 body{
+  margin:0;
   background:var(--bg);
   color:#333;
 }
 
 /* HEADER */
 header{
-  background:var(--marron);
+  background:var(--primary);
   color:#fff;
-  padding:16px 24px;
+  padding:14px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-header h1{font-size:20px;}
-header small{opacity:.9}
-
-/* BOTON WHATSAPP HEADER */
-.header-wa{
-  background:var(--verde);
-  border-radius:999px;
-  padding:10px 18px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
+header h1{
+  margin:0;
+  font-size:20px;
 }
 
-.header-wa img{
-  width:26px;
-  height:26px;
-}
-
-/* FILTROS */
-.filters{
-  display:flex;
-  gap:8px;
-  padding:16px 24px;
-  flex-wrap:wrap;
-}
-
-.filters button{
-  border:1px solid var(--marron);
-  background:#fff;
-  color:var(--marron);
-  padding:6px 12px;
-  border-radius:20px;
-  cursor:pointer;
-}
-
-.filters button.active{
-  background:var(--marron);
-  color:#fff;
+header p{
+  margin:0;
+  font-size:13px;
+  opacity:.9;
 }
 
 /* GRID */
-.grid{
-  padding:0 24px 40px;
+.catalogo{
+  max-width:1200px;
+  margin:20px auto;
+  padding:0 15px;
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:18px;
 }
 
 /* CARD */
 .card{
   background:var(--card);
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 6px 20px rgba(0,0,0,.08);
+  border-radius:14px;
+  padding:10px;
   display:flex;
   flex-direction:column;
 }
 
-/* IMAGEN / CARRUSEL */
+/* IMAGE BOX */
 .media{
-  background:var(--beige);
-  height:260px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   position:relative;
+  width:100%;
+  height:230px;
+  background:#ddd;
+  border-radius:10px;
+  overflow:hidden;
+  border:2px solid #d8cbb6;
 }
 
 .media img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
+  width:100%;
+  height:100%;
+  object-fit:contain; /* <<< CLAVE PARA QUE NO SE CORTE */
+  background:#eee;
 }
 
-/* FLECHAS */
-.arrow{
+/* CAROUSEL BUTTONS */
+.nav{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:#00000055;
-  color:#fff;
-  width:32px;
-  height:32px;
+  width:28px;
+  height:28px;
   border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:rgba(0,0,0,.5);
+  color:#fff;
+  border:none;
   cursor:pointer;
 }
 
-.arrow.left{left:10px}
-.arrow.right{right:10px}
+.nav.left{left:6px}
+.nav.right{right:6px}
 
-/* INFO */
+/* CONTENT */
 .info{
-  padding:14px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+  padding:10px 6px;
+  flex-grow:1;
 }
 
-.tags{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
+.info h3{
+  margin:6px 0 4px;
+  font-size:16px;
 }
-
-.tag{
-  font-size:11px;
-  background:var(--beige);
-  padding:3px 8px;
-  border-radius:10px;
-}
-
-h3{font-size:16px}
 
 .price{
-  color:var(--marron);
   font-weight:bold;
+  color:#b85c1e;
+  margin-bottom:8px;
 }
 
-/* BOTON */
+/* BUTTON */
 .btn{
-  margin-top:8px;
-  background:var(--verde);
+  margin-top:auto;
+  display:flex;
+  justify-content:center;
+}
+
+.btn a{
+  background:var(--wa);
   color:#fff;
   text-decoration:none;
-  padding:10px;
+  padding:10px 18px;
   border-radius:999px;
-  text-align:center;
   font-weight:bold;
-  display:flex;
+  display:inline-flex;
   align-items:center;
-  justify-content:center;
-  gap:8px;
+  gap:6px;
 }
 
-.btn img{
-  width:20px;
-  height:20px;
-}
+.btn a:hover{background:#1ebe5d}
 
-/* FLOAT WHATSAPP */
-.float-wa{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:var(--verde);
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.3);
-}
-
-.float-wa img{
-  width:32px;
-  height:32px;
-}
+/* SVG WHATSAPP */
+svg{width:18px;height:18px}
 </style>
 </head>
 
@@ -203,89 +144,83 @@ h3{font-size:16px}
 <header>
   <div>
     <h1>DecoSillas</h1>
-    <small>Catálogo de sillas, sillones y lámparas</small>
+    <p>Catálogo de sillas, sillones y lámparas</p>
   </div>
-  <a class="header-wa" href="https://wa.me/5491122535108" target="_blank">
-    <img src="whatsapp.png" alt="WhatsApp"> Contacto
-  </a>
 </header>
 
-<div class="filters">
-  <button class="active">Todas</button>
-  <button>Yute</button>
-  <button>Madera</button>
-  <button>Plástico</button>
-  <button>Metal</button>
-  <button>Gamer</button>
-</div>
+<!-- SVG ICON -->
+<svg style="display:none">
+  <symbol id="wa" viewBox="0 0 32 32">
+    <path fill="currentColor" d="M19.11 17.59c-.27-.14-1.6-.79-1.84-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.71-1.33-1.6-1.49-1.87-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.46-.61-.47l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.64 1.12 2.82c.14.18 1.93 2.95 4.67 4.13z"/>
+    <path fill="currentColor" d="M26.67 5.33A13.24 13.24 0 0 0 16.02 1C8.83 1 3 6.83 3 14.02c0 2.31.6 4.56 1.74 6.55L3 31l10.67-1.7a13 13 0 0 0 6.35 1.62h.01C27.2 30.92 33 25.1 33 17.9c0-3.48-1.36-6.75-3.33-8.57z"/>
+  </symbol>
+</svg>
 
-<section class="grid">
+<section class="catalogo">
 
-<!-- SILLA CAPRI (CARRUSEL) -->
+<!-- SILLON CAPRI (CAROUSEL) -->
 <div class="card">
-  <div class="media" data-images="capri1.jpg,capri2.jpg">
-    <img src="capri1.jpg">
-    <div class="arrow left">‹</div>
-    <div class="arrow right">›</div>
+  <div class="media" data-img="sillon-capri-1.jpg,sillon-capri-2.jpg">
+    <img src="sillon-capri-1.jpg">
+    <button class="nav left">‹</button>
+    <button class="nav right">›</button>
   </div>
   <div class="info">
-    <div class="tags"><span class="tag">Yute</span><span class="tag">Exterior</span></div>
     <h3>Sillón Capri</h3>
     <div class="price">$59.999</div>
-    <a class="btn" href="https://wa.me/5491122535108?text=Sillón%20Capri%20$59.999">
-      <img src="whatsapp.png"> Consultar
+  </div>
+  <div class="btn">
+    <a href="https://wa.me/5491160457748?text=Hola!%20Quiero%20el%20Sillón%20Capri">
+      <svg><use href="#wa"/></svg> Consultar
     </a>
   </div>
 </div>
 
-<!-- SILLA RIO -->
+<!-- SILLA RIO (CAROUSEL) -->
 <div class="card">
-  <div class="media" data-images="rio-blanca.jpg,rio-negra.jpg">
-    <img src="rio-blanca.jpg">
-    <div class="arrow left">‹</div>
-    <div class="arrow right">›</div>
+  <div class="media" data-img="silla-rio-blanca.jpg,silla-rio-negra.jpg">
+    <img src="silla-rio-blanca.jpg">
+    <button class="nav left">‹</button>
+    <button class="nav right">›</button>
   </div>
   <div class="info">
-    <div class="tags"><span class="tag">Plástico</span></div>
     <h3>Silla Río</h3>
     <div class="price">$19.999</div>
-    <a class="btn" href="https://wa.me/5491122535108?text=Silla%20Río%20$19.999">
-      <img src="whatsapp.png"> Consultar
+  </div>
+  <div class="btn">
+    <a href="https://wa.me/5491160457748?text=Hola!%20Quiero%20la%20Silla%20Río">
+      <svg><use href="#wa"/></svg> Consultar
     </a>
   </div>
 </div>
 
-<!-- SILLA ALLEGRA -->
+<!-- SILLA ALLEGRA (CAROUSEL) -->
 <div class="card">
-  <div class="media" data-images="allegra-negra.jpg,allegra-blanca.jpg">
-    <img src="allegra-negra.jpg">
-    <div class="arrow left">‹</div>
-    <div class="arrow right">›</div>
+  <div class="media" data-img="silla-allegra-negra.jpg,silla-allegra-blanca.jpg">
+    <img src="silla-allegra-negra.jpg">
+    <button class="nav left">‹</button>
+    <button class="nav right">›</button>
   </div>
   <div class="info">
-    <div class="tags"><span class="tag">Plástico</span></div>
     <h3>Silla Allegra</h3>
     <div class="price">$19.999</div>
-    <a class="btn" href="https://wa.me/5491122535108?text=Silla%20Allegra%20$19.999">
-      <img src="whatsapp.png"> Consultar
+  </div>
+  <div class="btn">
+    <a href="https://wa.me/5491160457748?text=Hola!%20Quiero%20la%20Silla%20Allegra">
+      <svg><use href="#wa"/></svg> Consultar
     </a>
   </div>
 </div>
 
 </section>
 
-<a class="float-wa" href="https://wa.me/5491122535108" target="_blank">
-  <img src="whatsapp.png">
-</a>
-
 <script>
-document.querySelectorAll('.media').forEach(media=>{
-  const imgs = media.dataset.images?.split(',');
-  if(!imgs) return;
+document.querySelectorAll('.media').forEach(box=>{
+  const imgs = box.dataset.img.split(',');
   let i=0;
-  const img = media.querySelector('img');
-  media.querySelector('.left').onclick=()=>{i=(i-1+imgs.length)%imgs.length;img.src=imgs[i];};
-  media.querySelector('.right').onclick=()=>{i=(i+1)%imgs.length;img.src=imgs[i];};
+  const img = box.querySelector('img');
+  box.querySelector('.left').onclick=()=>{i=(i-1+imgs.length)%imgs.length;img.src=imgs[i];}
+  box.querySelector('.right').onclick=()=>{i=(i+1)%imgs.length;img.src=imgs[i];}
 });
 </script>
 
