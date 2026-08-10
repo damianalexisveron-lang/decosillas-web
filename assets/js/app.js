@@ -74,7 +74,7 @@ function productCard(p) {
     <article class="product-card">
       <div class="product-image">
         ${image
-          ? `<img src="assets/img/${image}" alt="${p.name}" loading="lazy"
+          ? `<img src="imagenes/${image}" alt="${p.name}" loading="lazy"
                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')">`
           : ""
         }
