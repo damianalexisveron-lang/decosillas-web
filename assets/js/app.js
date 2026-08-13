@@ -912,7 +912,7 @@ function customerForm(withDni, withLocality) {
 function updateShippingPreview() {
 
   const locality =
-    $("localidad")?.value;
+    $("localidad")?.value || "";
 
   const result =
     $("shippingResult");
@@ -921,68 +921,63 @@ function updateShippingPreview() {
     return;
   }
 
-
-  const zone =
-    buscarTarifa(
-      locality || ""
-    );
-
-
-  if (!zone) {
+  if (!locality) {
 
     result.innerHTML = `
-
       🚚 <b>Envío:</b>
-
-      A cotizar por WhatsApp
-
+      Seleccioná una localidad para ver la tarifa.
     `;
 
     return;
   }
 
+  const zone =
+    buscarTarifa(locality);
+
+  if (!zone) {
+
+    result.innerHTML = `
+      🚚 <b>Envío:</b>
+      A cotizar por WhatsApp
+    `;
+
+    return;
+  }
 
   const tariff =
     textoTarifa(zone);
 
-
   if (zone.tipo === "rango") {
 
     result.innerHTML = `
-
-      🚚 <b>
-        Envío ${zone.label}:
-      </b>
-
+      🚚 <b>Envío ${zone.label}:</b>
       ${tariff}
 
       <br>
 
       <small>
-        El valor exacto se confirma
-        según el pedido.
+        El valor exacto se confirma según el pedido.
       </small>
-
     `;
 
+    return;
   }
 
-  else {
+  if (zone.tipo === "fijo") {
 
     result.innerHTML = `
-
-      🚚 <b>
-        Envío ${zone.label}:
-      </b>
-
+      🚚 <b>Envío ${zone.label}:</b>
       ${tariff}
-
     `;
 
+    return;
   }
 
+  result.innerHTML = `
+    🚚 <b>Envío:</b>
+    A cotizar por WhatsApp
+  `;
 }
-
 
 /* =========================
    VALOR DE INPUT
