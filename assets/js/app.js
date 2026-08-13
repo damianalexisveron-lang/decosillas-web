@@ -739,16 +739,14 @@ function renderCheckoutForm() {
   ) {
 
     locality.addEventListener(
-      "input",
-      updateShippingPreview
-    );
+  "change",
+  updateShippingPreview
+);
 
-    locality.addEventListener(
-      "change",
-      updateShippingPreview
-    );
-
-  }
+locality.addEventListener(
+  "input",
+  updateShippingPreview
+);
 
 }
 
