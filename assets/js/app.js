@@ -757,10 +757,7 @@ function renderCheckoutForm() {
    DATOS DEL CLIENTE
 ========================= */
 
-function customerForm(
-  withDni,
-  withLocality
-) {
+function customerForm(withDni, withLocality) {
 
   return `
 
@@ -772,14 +769,12 @@ function customerForm(
         <input
           id="destinatario"
           placeholder="Nombre y apellido">
-
       </label>
 
 
       ${
         withDni
           ? `
-
             <label>
               DNI
 
@@ -787,89 +782,84 @@ function customerForm(
                 id="dni"
                 inputmode="numeric"
                 placeholder="DNI">
-
             </label>
-
           `
           : ""
       }
 
 
       <label>
-
         Teléfono
 
         <input
           id="telefono"
           inputmode="tel"
           placeholder="11 1234-5678">
-
       </label>
 
 
       <label>
-
         Dirección
 
         <input
           id="direccion"
           placeholder="Calle y número">
-
       </label>
 
 
       ${
         withLocality
           ? `
-
             <label>
-
               Localidad
 
-              <input
-                id="localidad"
-                list="localidades"
-                placeholder="Escribí tu localidad...">
+              <select id="localidad">
 
-              <datalist id="localidades">
+                <option value="">
+                  Seleccionar localidad...
+                </option>
 
-                <option value="Ciudad de Buenos Aires">
-                <option value="Olivos">
-                <option value="Vicente López">
-                <option value="Florida">
-                <option value="Munro">
-                <option value="La Lucila">
-                <option value="Martínez">
-                <option value="San Isidro">
-                <option value="San Fernando">
-                <option value="Tigre">
-                <option value="Malvinas Argentinas">
-                <option value="San Martín">
-                <option value="San Miguel">
-                <option value="José C. Paz">
-                <option value="Pilar">
-                <option value="Escobar">
-                <option value="Merlo">
-                <option value="Moreno">
-                <option value="Ituzaingó">
-                <option value="Morón">
-                <option value="Ezeiza">
-                <option value="Esteban Echeverría">
-                <option value="Monte Grande">
-                <option value="Avellaneda">
-                <option value="Lanús">
-                <option value="Quilmes">
-                <option value="Lomas de Zamora">
-                <option value="Almirante Brown">
-                <option value="Florencio Varela">
-                <option value="Berazategui">
-                <option value="La Matanza">
-                <option value="La Plata">
+                <option>Ciudad de Buenos Aires</option>
 
-              </datalist>
+                <option>Olivos</option>
+                <option>Vicente López</option>
+                <option>Florida</option>
+                <option>Munro</option>
+                <option>La Lucila</option>
+                <option>Martínez</option>
+                <option>San Isidro</option>
+                <option>San Fernando</option>
+                <option>Tigre</option>
+                <option>Malvinas Argentinas</option>
+                <option>San Martín</option>
+                <option>San Miguel</option>
+                <option>José C. Paz</option>
+                <option>Pilar</option>
+                <option>Escobar</option>
+
+                <option>Merlo</option>
+                <option>Moreno</option>
+                <option>Ituzaingó</option>
+                <option>Morón</option>
+
+                <option>Ezeiza</option>
+                <option>Esteban Echeverría</option>
+                <option>Monte Grande</option>
+
+                <option>Avellaneda</option>
+                <option>Lanús</option>
+                <option>Quilmes</option>
+                <option>Lomas de Zamora</option>
+                <option>Almirante Brown</option>
+                <option>Florencio Varela</option>
+                <option>Berazategui</option>
+                <option>La Matanza</option>
+
+                <option>La Plata</option>
+
+              </select>
 
             </label>
-
           `
           : ""
       }
@@ -878,42 +868,34 @@ function customerForm(
       ${
         withDni
           ? `
-
             <label>
-
               Provincia
 
               <input
                 id="provincia"
                 placeholder="Provincia">
-
             </label>
 
 
             <label>
-
               Código Postal
 
               <input
                 id="codigoPostal"
                 placeholder="CP">
-
             </label>
-
           `
           : ""
       }
 
 
       <label>
-
         Observaciones
 
         <textarea
           id="observaciones"
           placeholder="Indicaciones para la entrega...">
         </textarea>
-
       </label>
 
     </div>
