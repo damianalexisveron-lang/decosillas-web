@@ -1,4 +1,3 @@
-
 import { products, categories } from "./products.js";
 import { buscarTarifa, textoTarifa } from "./envios.js";
 import { whatsapp } from "./config.js";
@@ -325,6 +324,11 @@ function renderCheckoutForm() {
     return;
   }
 
+  const previousValues = {};
+  $("checkoutForm").querySelectorAll("input, select, textarea").forEach(field => {
+    if (field.id) previousValues[field.id] = field.value;
+  });
+
   const mode = selectedDelivery();
 
   let deliveryForm = "";
@@ -358,6 +362,11 @@ function renderCheckoutForm() {
     </button>
   `;
 
+  Object.entries(previousValues).forEach(([id, fieldValue]) => {
+    const field = $(id);
+    if (field) field.value = fieldValue;
+  });
+
   document.querySelectorAll('input[name="payment"]').forEach(input => {
     input.addEventListener("change", () => {
       paymentMethod = input.value;
@@ -376,6 +385,7 @@ function renderCheckoutForm() {
 
   if (locality && mode === "amba") {
     locality.addEventListener("change", updateShippingPreview);
+    updateShippingPreview();
   }
 }
 
@@ -474,14 +484,33 @@ function updateShippingPreview() {
   if (!result) return;
 
   const zone = buscarTarifa(locality || "");
+  const productsSubtotal = subtotal();
+  const note = `<small>El costo del envío es orientativo y puede variar según la zona, la cantidad de productos y las condiciones de entrega. El importe final se confirma por WhatsApp.</small>`;
 
-  result.innerHTML = zone
-    ? `🚚 <b>Envío:</b> ${textoTarifa(zone)}${
-        zone.tipo === "rango"
-          ? "<br><small>El valor exacto se confirma según el pedido.</small>"
-          : ""
-      }`
-    : `🚚 <b>Envío:</b> A cotizar por WhatsApp`;
+  if (!locality) {
+    result.innerHTML = `🚚 <b>Envío estimado:</b> Seleccioná una localidad para calcularlo.<br>${note}`;
+    return;
+  }
+
+  if (!zone || zone.tipo === "cotizar") {
+    result.innerHTML = `🚚 <b>Envío estimado:</b> A cotizar por WhatsApp.<br>${note}`;
+    return;
+  }
+
+  if (zone.tipo === "fijo") {
+    result.innerHTML = `
+      🚚 <b>Envío estimado (${zone.label}):</b> ${money(zone.desde)}
+      <br>💰 <b>Total estimado:</b> ${money(productsSubtotal + zone.desde)}
+      <br>${note}
+    `;
+    return;
+  }
+
+  result.innerHTML = `
+    🚚 <b>Envío estimado (${zone.label}):</b> ${money(zone.desde)} - ${money(zone.hasta)}
+    <br>💰 <b>Total estimado:</b> ${money(productsSubtotal + zone.desde)} - ${money(productsSubtotal + zone.hasta)}
+    <br>${note}
+  `;
 }
 
 function value(id) {
@@ -531,10 +560,20 @@ function sendOrder() {
     const locality = value("localidad");
     const zone = buscarTarifa(locality);
 
-    message += `🚚 *Envío AMBA:* ${locality || "sin localidad seleccionada"}\n`;
-    message += `💵 *Tarifa:* ${
-      zone ? textoTarifa(zone) : "A cotizar por WhatsApp"
-    }\n`;
+    message += `🚚 *Envío estimado:* ${locality || "localidad sin seleccionar"}\n`;
+
+    if (!locality || !zone || zone.tipo === "cotizar") {
+      message += `💵 *Tarifa:* A cotizar por WhatsApp\n`;
+      message += `💰 *Total:* Subtotal de productos ${money(subtotal())} + envío a confirmar\n`;
+    } else if (zone.tipo === "fijo") {
+      message += `💵 *Tarifa estimada:* ${money(zone.desde)}\n`;
+      message += `💰 *Total estimado:* ${money(subtotal() + zone.desde)}\n`;
+    } else {
+      message += `💵 *Tarifa estimada:* ${money(zone.desde)} - ${money(zone.hasta)}\n`;
+      message += `💰 *Total estimado:* ${money(subtotal() + zone.desde)} - ${money(subtotal() + zone.hasta)}\n`;
+    }
+
+    message += `ℹ️ El envío es orientativo y puede variar según zona, cantidad de productos y condiciones de entrega. El importe final se confirma por WhatsApp.\n`;
   }
 
   if (delivery === "interior") {
