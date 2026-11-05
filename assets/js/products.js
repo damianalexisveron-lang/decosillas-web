@@ -1,4 +1,3 @@
-
 /*
   DECOSILLAS - CATALOGO COMPLETO
   price = efectivo
@@ -39,7 +38,7 @@ export const products = [
     price: 129999,
     min: 1,
     description: "Silla Bali tejida.",
-    images: []
+    images: ["bali-tejida-1.jpg"]
   },
   {
     id: "bali-tapizada",
@@ -48,7 +47,7 @@ export const products = [
     price: 129999,
     min: 1,
     description: "Silla Bali tapizada de Petiribí.",
-    images: []
+    images: ["bali-tapizada-1.jpg"]
   },
   {
     id: "palermo",
@@ -58,7 +57,7 @@ export const products = [
     transferPrice: 139999,
     min: 1,
     description: "Silla Palermo.",
-    images: []
+    images: ["palermo-1.jpg"]
   },
   {
     id: "poltrona",
@@ -76,7 +75,7 @@ export const products = [
     price: 169999,
     min: 1,
     description: "Poltrona de Petiribí con apoyabrazos.",
-    images: []
+    images: ["poltrona-apoyabrazos-1.jpg"]
   },
   {
     id: "nordico-x",
@@ -85,7 +84,7 @@ export const products = [
     price: 170000,
     min: 1,
     description: "Modelo Nórdico X.",
-    images: []
+    images: ["nordico-x-1.jpg"]
   },
   {
     id: "nordico-ypf",
@@ -94,7 +93,7 @@ export const products = [
     price: 150000,
     min: 1,
     description: "Modelo Nórdico YPF.",
-    images: []
+    images: ["nordico-ypf-1.jpg"]
   },
   {
     id: "moller",
@@ -104,7 +103,7 @@ export const products = [
     transferPrice: 129999,
     min: 1,
     description: "Silla Moller.",
-    images: []
+    images: ["moller-1.jpg"]
   },
   {
     id: "moller-tapizado",
@@ -113,7 +112,7 @@ export const products = [
     price: 124999,
     min: 1,
     description: "Moller tapizado de madera Petiribí.",
-    images: []
+    images: ["moller-tapizado-1.jpg"]
   },
   {
     id: "silla-recta",
@@ -122,7 +121,7 @@ export const products = [
     price: 119999,
     min: 1,
     description: "Silla Recta de Petiribí.",
-    images: []
+    images: ["silla-recta-1.jpg"]
   },
   {
     id: "banqueta-recta",
@@ -149,7 +148,7 @@ export const products = [
     price: 145000,
     min: 1,
     description: "Banqueta Bali tejida.",
-    images: []
+    images: ["banqueta-bali-tejida-1.jpg"]
   },
   {
     id: "banqueta-tractor",
@@ -168,7 +167,7 @@ export const products = [
     price: 139999,
     min: 1,
     description: "Rufina tapizada.",
-    images: []
+    images: ["rufina-tapizada-1.jpg"]
   },
   {
     id: "ibiza-tapizada",
@@ -227,7 +226,7 @@ export const products = [
     price: 49999,
     min: 1,
     description: "Silla Lisboa.",
-    images: []
+    images: ["silla-lisboa-1.jpg"]
   },
   {
     id: "banqueta-lisboa",
@@ -236,7 +235,7 @@ export const products = [
     price: 49999,
     min: 1,
     description: "Banqueta Lisboa.",
-    images: []
+    images: ["banqueta-lisboa-1.jpg"]
   },
   {
     id: "silla-praga",
@@ -245,7 +244,7 @@ export const products = [
     price: 49999,
     min: 1,
     description: "Silla Praga.",
-    images: []
+    images: ["silla-praga-1.jpg"]
   },
   {
     id: "banqueta-praga",
@@ -254,7 +253,7 @@ export const products = [
     price: 49999,
     min: 1,
     description: "Banqueta Praga.",
-    images: []
+    images: ["banqueta-praga-1.jpg"]
   },
   {
     id: "capri",
@@ -272,7 +271,7 @@ export const products = [
     price: 70000,
     min: 1,
     description: "Modelo India.",
-    images: []
+    images: ["india-1.jpg"]
   },
   {
     id: "gervasoni-individual-sin-almohadon",
@@ -281,7 +280,7 @@ export const products = [
     price: 79999,
     min: 1,
     description: "Individual sin almohadón.",
-    images: []
+    images: ["gervasoni-individual-sin-almohadon-1.jpg"]
   },
   {
     id: "gervasoni-individual-con-almohadon",
@@ -290,7 +289,7 @@ export const products = [
     price: 105000,
     min: 1,
     description: "Individual con almohadón.",
-    images: []
+    images: ["gervasoni-individual-con-almohadon-1.jpg"]
   },
   {
     id: "gervasoni-doble-sin-almohadon",
@@ -299,7 +298,7 @@ export const products = [
     price: 95000,
     min: 1,
     description: "Doble sin almohadón.",
-    images: []
+    images: ["gervasoni-doble-sin-almohadon-1.jpg"]
   },
   {
     id: "gervasoni-doble-con-almohadon",
@@ -308,7 +307,7 @@ export const products = [
     price: 135000,
     min: 1,
     description: "Doble con almohadón.",
-    images: []
+    images: ["gervasoni-doble-con-almohadon-1.jpg"]
   },
   {
     id: "apoyabrazos",
@@ -326,7 +325,7 @@ export const products = [
     price: 179999,
     min: 1,
     description: "Hamaca completa.",
-    images: []
+    images: ["hamaca-1.jpg"]
   },
   {
     id: "amsterdam",
@@ -335,7 +334,7 @@ export const products = [
     price: 45000,
     min: 1,
     description: "Modelo Ámsterdam.",
-    images: []
+    images: ["amsterdam-1.jpg"]
   },
   {
     id: "mecedora",
@@ -396,7 +395,7 @@ export const products = [
     transferPrice: 124999,
     min: 4,
     description: "Silla Windsor.",
-    images: []
+    images: ["windsor-1.jpg"]
   },
   {
     id: "eames",
@@ -460,7 +459,7 @@ export const products = [
     transferPrice: 115000,
     min: 1,
     description: "Silla Bastón.",
-    images: []
+    images: ["baston-1.jpg"]
   },
   {
     id: "sillon-ejecutivo-apoyapies",
@@ -470,7 +469,7 @@ export const products = [
     transferPrice: 140000,
     min: 1,
     description: "Sillón ejecutivo con apoyapiés.",
-    images: []
+    images: ["sillon-ejecutivo-apoyapies-1.jpg"]
   },
   {
     id: "sillon-ejecutivo-sin-apoyapies",
@@ -480,7 +479,7 @@ export const products = [
     transferPrice: 129999,
     min: 1,
     description: "Sillón ejecutivo sin apoyapiés.",
-    images: []
+    images: ["sillon-ejecutivo-sin-apoyapies-1.jpg"]
   },
   {
     id: "mesa-gamer",
@@ -490,7 +489,7 @@ export const products = [
     transferPrice: 130000,
     min: 1,
     description: "Mesa Gamer.",
-    images: []
+    images: ["mesa-gamer-1.jpg"]
   },
 
   // ==================================
@@ -539,7 +538,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Dos individuales Gervasoni y mesa.",
-    images: []
+    images: ["combo-gervasoni-2-individuales-mesa-1.jpg"]
   },
   {
     id: "combo-gervasoni-2-individuales-doble-mesa",
@@ -548,7 +547,7 @@ export const products = [
     price: 380000,
     min: 1,
     description: "Dos individuales, un doble Gervasoni y mesa.",
-    images: []
+    images: ["combo-gervasoni-2-individuales-doble-mesa-1.jpg"]
   },
 
   // ==================================
@@ -562,7 +561,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa redonda de vidrio y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-redonda-vidrio-tulip-1.jpg"]
   },
   {
     id: "combo-redonda-vidrio-120-tulip",
@@ -571,7 +570,7 @@ export const products = [
     price: 270000,
     min: 1,
     description: "Mesa redonda de vidrio y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-redonda-vidrio-120-tulip-1.jpg"]
   },
   {
     id: "combo-redonda-blanca-tulip",
@@ -580,7 +579,7 @@ export const products = [
     price: 260000,
     min: 1,
     description: "Mesa redonda blanca y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-redonda-blanca-tulip-1.jpg"]
   },
   {
     id: "combo-redonda-negra-tulip",
@@ -589,7 +588,7 @@ export const products = [
     price: 270000,
     min: 1,
     description: "Mesa redonda negra y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-redonda-negra-tulip-1.jpg"]
   },
   {
     id: "combo-rectangular-tulip",
@@ -598,7 +597,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-rectangular-tulip-1.jpg"]
   },
   {
     id: "combo-rectangular-blanca-tulip",
@@ -607,7 +606,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular blanca y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-rectangular-blanca-tulip-1.jpg"]
   },
   {
     id: "combo-rectangular-negra-tulip",
@@ -616,7 +615,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular negra y cuatro sillas Tulip.",
-    images: []
+    images: ["combo-rectangular-negra-tulip-1.jpg"]
   },
 
   // ==================================
@@ -630,7 +629,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa redonda de vidrio y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-redonda-vidrio-windsor-1.jpg"]
   },
   {
     id: "combo-redonda-vidrio-120-windsor",
@@ -639,7 +638,7 @@ export const products = [
     price: 270000,
     min: 1,
     description: "Mesa redonda de vidrio y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-redonda-vidrio-120-windsor-1.jpg"]
   },
   {
     id: "combo-redonda-blanca-windsor",
@@ -648,7 +647,7 @@ export const products = [
     price: 260000,
     min: 1,
     description: "Mesa redonda blanca y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-redonda-blanca-windsor-1.jpg"]
   },
   {
     id: "combo-redonda-negra-windsor",
@@ -657,7 +656,7 @@ export const products = [
     price: 270000,
     min: 1,
     description: "Mesa redonda negra y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-redonda-negra-windsor-1.jpg"]
   },
   {
     id: "combo-rectangular-windsor",
@@ -666,7 +665,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-rectangular-windsor-1.jpg"]
   },
   {
     id: "combo-rectangular-blanca-windsor",
@@ -675,7 +674,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular blanca y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-rectangular-blanca-windsor-1.jpg"]
   },
   {
     id: "combo-rectangular-negra-windsor",
@@ -684,7 +683,7 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular negra y cuatro sillas Windsor.",
-    images: []
+    images: ["combo-rectangular-negra-windsor-1.jpg"]
   },
 
   // ==================================
@@ -698,7 +697,7 @@ export const products = [
     price: 60000,
     min: 1,
     description: "Lámpara María.",
-    images: []
+    images: ["lampara-maria-1.jpg"]
   },
   {
     id: "lampara-diamante",
@@ -707,7 +706,7 @@ export const products = [
     price: 50000,
     min: 1,
     description: "Lámpara Diamante.",
-    images: []
+    images: ["lampara-diamante-1.jpg"]
   }
 
 ];
