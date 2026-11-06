@@ -176,7 +176,7 @@ export const products = [
     price: 139999,
     min: 1,
     description: "Ibiza tapizada.",
-    images: ["imagenes/ibiza-tapizada-1.jpg"]
+    images: ["ibiza-tapizada-1.jpg"]
   },
 
   // ==================================
