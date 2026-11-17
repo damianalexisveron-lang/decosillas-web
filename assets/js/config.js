@@ -1,15 +1,15 @@
+
 /*
   CONFIGURACIÓN GENERAL
-  El número es el mismo esquema que tenía la web actual:
-  también permite enviar el pedido a distintos vendedores con ?asesor=damian
+  Permite enviar el pedido a distintos vendedores con ?asesor=damian
 */
 
 export const asesores = {
-  damian: "5491124909892",
+  damian: "5491135757756",
   leonardo: "5491160457748",
-  marcela: "5491156405357",
+  marcela: "5491125075328",
   estefano: "5491157828201",
-  magali: "5491162472194"
+  franco: "5491128444439"
 };
 
 const params = new URLSearchParams(window.location.search);
