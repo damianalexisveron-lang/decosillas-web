@@ -1,9 +1,5 @@
-
-/*
-  CONFIGURACIÓN GENERAL
-  Permite enviar el pedido a distintos vendedores con ?asesor=damian
-*/
-
+/* Configuración de asesores de DecoSillas.
+   El catálogo usa ?asesor=damian|leonardo|marcela|estefano|franco */
 export const asesores = {
   damian: "5491135757756",
   leonardo: "5491160457748",
