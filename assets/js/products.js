@@ -12,8 +12,7 @@ export const categories = [
   { id: "plastico", label: "🪑 Plástico" },
   { id: "oficina", label: "🎮 Oficina / Gamer" },
   { id: "metal", label: "⚙️ Metal / Tolix" },
-  { id: "combos", label: "⭐ Combos" },
-  { id: "lamparas", label: "💡 Lámparas" }
+  { id: "combos", label: "⭐ Combos" }
 ];
 
 export const products = [
@@ -229,15 +228,6 @@ export const products = [
     images: ["silla-lisboa-1.jpg"]
   },
   {
-    id: "banqueta-lisboa",
-    name: "Banqueta Lisboa",
-    category: "yute",
-    price: 49999,
-    min: 1,
-    description: "Banqueta Lisboa.",
-    images: ["banqueta-lisboa-1.jpg"]
-  },
-  {
     id: "silla-praga",
     name: "Silla Praga",
     category: "yute",
@@ -395,7 +385,8 @@ export const products = [
     transferPrice: 124999,
     min: 4,
     description: "Silla Windsor.",
-    images: ["windsor-1.jpg"]
+    images: ["windsor-1.jpg"],
+    outOfStock: true
   },
   {
     id: "eames",
@@ -405,7 +396,8 @@ export const products = [
     transferPrice: 124999,
     min: 4,
     description: "Silla Eames.",
-    images: ["eames-1.jpg"]
+    images: ["eames-1.jpg"],
+    outOfStock: true
   },
   {
     id: "milan",
@@ -544,7 +536,7 @@ export const products = [
     id: "combo-gervasoni-2-individuales-doble-mesa",
     name: "Juego 2 individuales + doble + mesa",
     category: "combos",
-    price: 380000,
+    price: 420000,
     min: 1,
     description: "Dos individuales, un doble Gervasoni y mesa.",
     images: ["combo-gervasoni-2-individuales-doble-mesa-1.jpg"]
@@ -591,15 +583,6 @@ export const products = [
     images: ["combo-redonda-negra-tulip-1.jpg"]
   },
   {
-    id: "combo-rectangular-tulip",
-    name: "Mesa rectangular 1,20 m + 4 sillas Tulip",
-    category: "combos",
-    price: 250000,
-    min: 1,
-    description: "Mesa rectangular y cuatro sillas Tulip.",
-    images: ["combo-rectangular-tulip-1.jpg"]
-  },
-  {
     id: "combo-rectangular-blanca-tulip",
     name: "Mesa rectangular blanca 1,20 m + 4 sillas Tulip",
     category: "combos",
@@ -619,7 +602,7 @@ export const products = [
   },
 
   // ==================================
-  // COMBOS CON WINDSOR
+  // COMBOS CON WINDSOR - SIN STOCK
   // ==================================
 
   {
@@ -629,7 +612,8 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa redonda de vidrio y cuatro sillas Windsor.",
-    images: ["combo-redonda-vidrio-windsor-1.jpg"]
+    images: ["combo-redonda-vidrio-windsor-1.jpg"],
+    outOfStock: true
   },
   {
     id: "combo-redonda-vidrio-120-windsor",
@@ -638,7 +622,8 @@ export const products = [
     price: 270000,
     min: 1,
     description: "Mesa redonda de vidrio y cuatro sillas Windsor.",
-    images: ["combo-redonda-vidrio-120-windsor-1.jpg"]
+    images: ["combo-redonda-vidrio-120-windsor-1.jpg"],
+    outOfStock: true
   },
   {
     id: "combo-redonda-blanca-windsor",
@@ -647,7 +632,8 @@ export const products = [
     price: 260000,
     min: 1,
     description: "Mesa redonda blanca y cuatro sillas Windsor.",
-    images: ["combo-redonda-blanca-windsor-1.jpg"]
+    images: ["combo-redonda-blanca-windsor-1.jpg"],
+    outOfStock: true
   },
   {
     id: "combo-redonda-negra-windsor",
@@ -656,16 +642,8 @@ export const products = [
     price: 270000,
     min: 1,
     description: "Mesa redonda negra y cuatro sillas Windsor.",
-    images: ["combo-redonda-negra-windsor-1.jpg"]
-  },
-  {
-    id: "combo-rectangular-windsor",
-    name: "Mesa rectangular 1,20 m + 4 sillas Windsor",
-    category: "combos",
-    price: 250000,
-    min: 1,
-    description: "Mesa rectangular y cuatro sillas Windsor.",
-    images: ["combo-rectangular-windsor-1.jpg"]
+    images: ["combo-redonda-negra-windsor-1.jpg"],
+    outOfStock: true
   },
   {
     id: "combo-rectangular-blanca-windsor",
@@ -674,7 +652,8 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular blanca y cuatro sillas Windsor.",
-    images: ["combo-rectangular-blanca-windsor-1.jpg"]
+    images: ["combo-rectangular-blanca-windsor-1.jpg"],
+    outOfStock: true
   },
   {
     id: "combo-rectangular-negra-windsor",
@@ -683,30 +662,8 @@ export const products = [
     price: 250000,
     min: 1,
     description: "Mesa rectangular negra y cuatro sillas Windsor.",
-    images: ["combo-rectangular-negra-windsor-1.jpg"]
-  },
-
-  // ==================================
-  // LAMPARAS
-  // ==================================
-
-  {
-    id: "lampara-maria",
-    name: "Lámpara María",
-    category: "lamparas",
-    price: 60000,
-    min: 1,
-    description: "Lámpara María.",
-    images: ["lampara-maria-1.jpg"]
-  },
-  {
-    id: "lampara-diamante",
-    name: "Lámpara Diamante",
-    category: "lamparas",
-    price: 50000,
-    min: 1,
-    description: "Lámpara Diamante.",
-    images: ["lampara-diamante-1.jpg"]
+    images: ["combo-rectangular-negra-windsor-1.jpg"],
+    outOfStock: true
   }
 
 ];
