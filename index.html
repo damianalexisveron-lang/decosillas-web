@@ -1,90 +1,51 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DecoSillas — catálogo de sillas, banquetas, muebles y lámparas. Armá tu pedido y envialo por WhatsApp.">
-  <title>DecoSillas | Catálogo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4eee4">
+  <meta name="description" content="Catálogo DecoSillas: sillas, banquetas y combos. Envíos y retiro en Olivos, Vicente López. Consultá por WhatsApp.">
+  <title>DecoSillas.ar | Catálogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#">DecoSillas<span>.ar</span></a>
-    <button class="cart-button" id="openCart">🛒 Mi pedido <b id="cartCount">0</b></button>
+    <a class="brand" href="./" aria-label="DecoSillas inicio"><img src="imagenes/decosillas-logo.jpg" alt="DecoSillas.ar"></a>
+    <div class="header-actions"><span class="header-note">Muebles para tus espacios</span><button id="openCart" class="cart-button" type="button" aria-label="Abrir carrito">Carrito <span id="cartCount">0</span></button></div>
   </header>
-
   <main>
     <section class="hero">
-      <div>
-        <p class="eyebrow">DECOSILLAS.AR</p>
-        <h1>Sillas y muebles para tu hogar y negocio.</h1>
-        <p class="hero-copy">Elegí tus productos, armá el pedido y enviá todos tus datos directamente por WhatsApp.</p>
-        <div class="trust">
-          <span>🚚 Envíos a todo el país</span>
-          <span>📍 Retiro en Olivos</span>
-          <span>💬 Atención por WhatsApp</span>
-        </div>
-      </div>
+      <div class="hero-copy"><span class="eyebrow">CATÁLOGO DECO SILLAS</span><h1>Diseño y comodidad<br><em>para tu hogar.</em></h1><p>Encontrá tu próximo conjunto. Consultá disponibilidad, formas de pago y envíos.</p><a class="hero-link" href="#catalogo">Ver productos <span>↓</span></a></div>
+      <div class="hero-art" aria-hidden="true"><div class="hero-orbit"></div><div class="hero-caption">ESTILO · CALIDAD · DISEÑO</div></div>
     </section>
-
-    <section class="catalog-toolbar">
-      <div id="categories" class="categories"></div>
-      <label class="search">
-        <span>🔎</span>
-        <input id="search" type="search" placeholder="Buscar producto...">
-      </label>
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading"><div><span class="eyebrow">NUESTROS PRODUCTOS</span><h2>Encontrá lo que buscás</h2></div><p>Elegí tus productos y armá tu pedido.</p></div>
+      <div class="catalog-tools"><div id="categories" class="categories" aria-label="Categorías"></div><label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar productos..." autocomplete="off"></label></div>
+      <div id="products" class="products-grid"></div>
+      <div id="empty" class="empty-state hidden">No encontramos productos con esa búsqueda.</div>
     </section>
-
-    <section class="catalog">
-      <div id="products" class="product-grid"></div>
-      <p id="empty" class="empty hidden">No encontramos productos con esa búsqueda.</p>
-    </section>
+    <section class="service-strip"><div><b>Envíos</b><span>Consultá tu zona</span></div><div><b>Retiro</b><span>Olivos, Vicente López</span></div><div><b>Atención</b><span>Directo con nuestros vendedores</span></div></section>
   </main>
-
-  <footer>
-    <strong>DecoSillas.ar</strong> · Catálogo online · Pedidos por WhatsApp
-  </footer>
-
-  <div id="cartOverlay" class="overlay" aria-hidden="true">
-    <aside class="drawer">
-      <div class="drawer-head">
-        <div>
-          <p class="eyebrow">DECOSILLAS</p>
-          <h2>Mi pedido</h2>
-        </div>
-        <button id="closeCart" class="icon-button">×</button>
-      </div>
-
-      <div id="cartItems"></div>
-
-      <div class="summary">
-        <span>Subtotal productos</span>
-        <strong id="subtotal">$0</strong>
-      </div>
-
-      <section class="checkout">
-        <h3>¿Cómo querés recibirlo?</h3>
-
-        <label class="delivery-option">
-          <input type="radio" name="delivery" value="amba" checked>
-          <span><b>Buenos Aires / AMBA</b><small>Seleccionás tu localidad y se suma el envío.</small></span>
-        </label>
-
-        <label class="delivery-option">
-          <input type="radio" name="delivery" value="interior">
-          <span><b>Interior del país</b><small>El envío se cotiza por WhatsApp.</small></span>
-        </label>
-
-        <label class="delivery-option">
-          <input type="radio" name="delivery" value="retiro">
-          <span><b>Retiro en depósito</b><small>Olivos, Vicente López.</small></span>
-        </label>
-
-        <div id="checkoutForm"></div>
-      </section>
+  <footer class="site-footer"><a class="footer-brand" href="./">decosillas.ar</a><span>Catálogo · Envíos · Retiro en Olivos, Vicente López</span></footer>
+  <a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp"><span class="wa-icon">◔</span><span>Consultar</span></a>
+  <div id="cartOverlay" class="cart-overlay" aria-hidden="true">
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer-header"><div><span class="eyebrow">TU PEDIDO</span><h2 id="cartTitle">Carrito</h2></div><button id="closeCart" class="close-cart" type="button" aria-label="Cerrar carrito">×</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary"><span>Subtotal de productos</span><strong id="subtotal">$0</strong></div>
+      <div class="delivery-options"><b>¿Cómo querés recibirlo?</b><label><input type="radio" name="delivery" value="amba" checked> Envío en Buenos Aires</label><label><input type="radio" name="delivery" value="interior"> Envío al interior</label><label><input type="radio" name="delivery" value="retiro"> Retiro en Olivos</label></div>
+      <div id="checkoutForm" class="checkout-form"></div>
+      <p class="drawer-footnote">El pedido se confirma directamente con el vendedor por WhatsApp.</p>
     </aside>
   </div>
-
   <script type="module" src="assets/js/app.js"></script>
+  <script type="module">
+    import { whatsapp } from './assets/js/config.js';
+    const link = document.getElementById('whatsappFloat');
+    link.href = `https://wa.me/${whatsapp}?text=${encodeURIComponent('Hola! Quiero consultar por el catálogo de DecoSillas.')}`;
+  </script>
 </body>
 </html>
