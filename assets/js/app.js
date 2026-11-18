@@ -248,6 +248,21 @@ function changeProductQty(id, delta) {
   renderProducts();
 }
 
+function changeCartQty(id, delta) {
+  const p = products.find(x => x.id === id);
+  if (!p || p.outOfStock || !cart[id]) return;
+
+  const nextQty = cart[id] + delta;
+  if (nextQty < (p.min || 1)) {
+    delete cart[id];
+  } else {
+    cart[id] = nextQty;
+  }
+
+  updateCart();
+  renderProducts();
+}
+
 function cartEntries() {
   return Object.entries(cart).filter(([, qty]) => qty > 0);
 }
